@@ -1,0 +1,205 @@
+
+html, body {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#ff8a64,#ff6433) ;
+    margin-left: 30%;
+    margin-top: 5%;
+    width: 40%;
+    height: 80%;
+    
+}
+.gras {
+    font-weight: bold;
+}
+textarea {
+    vertical-align: middle;
+    text-align: right;
+    font-family: 'Nunito', sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    
+}
+.calculator {
+    display: grid;
+    grid-template-columns: 0.25fr 1fr 1fr 1fr 1fr 0.25fr;
+    grid-template-rows: repeat(8, 1fr) 0.25fr;
+    grid-gap: 2%;
+    width: 56%;
+    height: 80%;
+    background-color: black;
+    border-radius: 4%;
+    padding: 1%;
+    margin-bottom: 2%;
+}
+
+h1{
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    grid-column: 2/6;
+    grid-row: 1;
+    font-size: 130%;
+    text-align: center;
+    margin: 3%;
+    padding-top: 3%;
+}
+
+.gras {
+    font-weight: bold;
+}
+
+.ecran {
+    background-color: aliceblue;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end : 4;
+    border-radius: 3%;
+    text-align: right;
+    vertical-align: baseline;
+    font-family: 'Nunito', sans-serif;
+    font-size: larger;
+}
+
+.bouton1{
+    background-color: red;
+    grid-row: 4;
+    grid-column: 2;
+    text-align: center;
+    color: white;
+    border-radius: 7%;
+    vertical-align: middle;
+    line-height: 40px;
+    font-family: 'Nunito', sans-serif;
+    font-size: larger;
+    font-weight: bolder;
+
+}
+
+div[class^='bouton'] {
+    background-color:white;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 40px;
+    text-align: center;
+    box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+
+   
+    border-radius: 7%;
+
+}
+.bouton2{
+    grid-row: 4;
+    grid-column: 3;
+}
+.bouton3{
+
+    grid-row: 4;
+    grid-column: 4;
+   
+
+}
+.bouton4{
+ 
+    grid-row: 4;
+    grid-column: 5;
+   
+}
+.bouton5{
+    grid-row: 5;
+    grid-column: 2;
+}
+.bouton6{
+    grid-row: 5;
+    grid-column: 3;
+}
+.bouton7{
+    grid-row: 5;
+    grid-column: 4;
+}
+.bouton8{
+    grid-row: 5;
+    grid-column: 5;
+}
+.bouton9{
+    grid-row: 6;
+    grid-column: 2;
+}
+.bouton10{
+    grid-row: 6;
+    grid-column: 3;
+}
+.bouton11{
+    grid-row: 6;
+    grid-column: 4;
+}
+.bouton12{
+    grid-row: 6;
+    grid-column: 5;
+}
+.bouton13{
+    grid-row: 7;
+    grid-column: 2;
+}
+.bouton14{
+    grid-row: 7;
+    grid-column: 3;
+}
+.bouton15{
+    grid-row: 7;
+    grid-column: 4;
+}
+.bouton16{
+    grid-row: 7;
+    grid-column: 5;
+}
+.bouton17{
+    grid-row: 8;
+    grid-column: 2;
+  
+}
+.bouton18{
+    grid-row: 8;
+    grid-column: 3;
+  
+}
+.bouton19{
+    grid-row: 8;
+    grid-column-start: 4 ;
+    grid-column-end: 6;
+    background-color: #494949;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 40px;
+    text-align: center;
+    box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    font-family: --font-family;
+    font-weight: bolder;
+    font-size: larger;
+    border-radius: 5%;
+ 
+   
+}
+

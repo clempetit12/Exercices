@@ -1,1 +1,2 @@
 # Exercices
+ajout texte readme 

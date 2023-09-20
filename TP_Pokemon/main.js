@@ -7,6 +7,9 @@ const img = document.querySelector("img")
 let names = document.querySelector(".name")
 let weights = document.querySelector(".weight")
 let heights = document.querySelector(".height")
+let surprise = document.getElementById("surprise")
+const fleche2 = document.getElementById("fleche2")
+const fleche1 = document.getElementById("fleche1")
 
 let tabPokemon = [apiUrl1,apiUrl2,apiUrl3,apiUrl4]
 let tabPokemon2 = []
@@ -19,7 +22,6 @@ tabPokemon.forEach(element => {
       if (!response.ok) {
         throw new Error(`La requete a echoue avec un statut ${response.status}`);
       }
-  
       return response.json();
     })
     .then((data) => {
@@ -49,7 +51,7 @@ console.log(min);
 console.log(max);
 
 //Fonction appliquée au bouton avant 
-const fleche1 = document.getElementById("fleche1")
+
 fleche1.addEventListener('click',(event) =>{
   if (cpt == min){
     cpt = max
@@ -65,7 +67,7 @@ cpt --
     
 } )
 //Fonction appliquée au bouton après
-const fleche2 = document.getElementById("fleche2")
+
 fleche2.addEventListener('click',(event) =>{
   if (cpt == max){
     cpt = min
@@ -80,3 +82,22 @@ cpt ++
 
     
 } )
+
+//Fonction appliquée au bouton surprise
+surprise.addEventListener('click',(event) =>{
+let randomNumber = getRandomInt(max)
+while (cpt == randomNumber ) {
+  randomNumber = getRandomInt(max)
+
+}
+cpt = randomNumber
+    img.src = `${tabPokemon2[cpt]["image"]}`
+    names.innerHTML = `${tabPokemon2[cpt]["name"]}`
+    weights.innerHTML = `${tabPokemon2[cpt]["weight"]}`
+    heights.innerHTML = `${tabPokemon2[cpt]["height"]}`
+  
+} )
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}

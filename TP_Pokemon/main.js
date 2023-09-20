@@ -43,11 +43,40 @@ tabPokemon.forEach(element => {
     
 });
 
+let min = 0
+let max = tabPokemon.length-1
+console.log(min);
+console.log(max);
+
+//Fonction appliquée au bouton avant 
 const fleche1 = document.getElementById("fleche1")
 fleche1.addEventListener('click',(event) =>{
-    console.log("bonjour");
-    console.log(tabPokemon2[cpt-1]);
-    console.log(tabPokemon2["image"]);
-    img.src = `${tabPokemon2["image"][cpt-1]}`
-    names.innerHTML=`${tabPokemon2[cpt--].toString}`
+  if (cpt == min){
+    cpt = max
+  } else {
+cpt --
+  }
+    img.src = `${tabPokemon2[cpt]["image"]}`
+    names.innerHTML = `${tabPokemon2[cpt]["name"]}`
+    weights.innerHTML = `${tabPokemon2[cpt]["weight"]}`
+    heights.innerHTML = `${tabPokemon2[cpt]["height"]}`
+    
+
+    
+} )
+//Fonction appliquée au bouton après
+const fleche2 = document.getElementById("fleche2")
+fleche2.addEventListener('click',(event) =>{
+  if (cpt == max){
+    cpt = min
+  } else {
+cpt ++
+  }
+    img.src = `${tabPokemon2[cpt]["image"]}`
+    names.innerHTML = `${tabPokemon2[cpt]["name"]}`
+    weights.innerHTML = `${tabPokemon2[cpt]["weight"]}`
+    heights.innerHTML = `${tabPokemon2[cpt]["height"]}`
+    
+
+    
 } )

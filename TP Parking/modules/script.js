@@ -33,7 +33,6 @@ pay.addEventListener("click", () => {
 function tarifs(plaqueImmatriculation) {
   let vehiculeTrouve = 0;
   const timeout = new Date();
-}
 tabVeh.forEach((element) => {
   if (plaqueImmatriculation == element.plaqueImmatriculation) {
     vehiculeTrouve = 1;
@@ -52,18 +51,19 @@ tabVeh.forEach((element) => {
       setTimeout(function () {
         affichage.innerHTML = "";
       }, 5000);
-    } else if (timeout - element.date > 45 * 60 * 1000) {
+    } else (timeout - element.date > 45 * 60 * 1000) {
       affichage.innerHTML = `<span style="background-color: coral"> Le prix à payer pour le véhicule ${plaqueImmatriculation} est de 6€ </span>`;
       setTimeout(function () {
         affichage.innerHTML = "";
       }, 5000);
+    } }
     } else {
 affichage.innerHTML = `<span style="background-color: red"> Le véhicule ${plaqueImmatriculation} n'existe pas <br> </span>`;
   affichage.innerHTML += `<span style="background-color: green">Veuillez prendre un ticket pour le véhicule ${plaqueImmatriculation}</span>`;
   setTimeout(function () {
     affichage.innerHTML = "";
   }, 5000);
-  }
-}
+
 });
+}
 

@@ -1,7 +1,7 @@
 let userName: string = "Clémence";
 let userAge: number = 30;
 let isLogin: boolean = true;
-let userNames = ["toto", "tata"]
+let userNames : Array<string> = []
 userNames.push(userName)
 
 console.log(userNames);

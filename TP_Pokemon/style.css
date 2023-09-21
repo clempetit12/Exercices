@@ -1,25 +1,49 @@
 html {
     padding: 0;
     margin: 0;
-    
+
 }
+
 .container {
-    margin-top: 10%;
-    height: 100%;
-    width: 30%;
-    background-color: lightcoral;
+    background-color: lightblue;
     display: flex;
-    margin-left: 30%;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 2%;
-   
-   
+    padding: 10%;
+    margin-top: 5%;
+
+
+
 }
-.card, .name, .weight, .height  {
+
+.bloc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-color: black;
+    border: 10%;
+    margin-top: 2%;
+    width: 50%;
+    height: 40%;
+
+
+}
+
+.card,
+.name,
+.weight,
+.height ,
+.fleches,
+.surprise {
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Inclusive Sans', sans-serif;
     padding: 5%;
+}
+
+#fleche1 {
+    border-radius: 10%;
 }

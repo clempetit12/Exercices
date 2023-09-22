@@ -1,7 +1,7 @@
 
 
 export class Matter {
-    constructor(matter,note){
+    constructor(matter, note) {
         this.matter = matter;
         this.note = ""
     }

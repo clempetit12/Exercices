@@ -9,96 +9,149 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
     <title>TP Notes</title>
 </head>
 
 <body>
+    <main>
+        <div class="p-4 bg-dark text-light">
+            <h1>- Liste de Notes -</h1>
+            <hr>
+            <div class="row">
+                <div class="col-4 ">
+                    <h2>Ajouter un élève <button class="btn btn-outline-light off" id="off1">ON</button></h2>
+                    <hr>
+                    <div class="hide">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="name">Nom :</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="name" class="form-control" id="name" placeholder="nom">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="firstname">Prénom : </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="firstname" class="form-control" id="firstname" placeholder="prenom">
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-outline-light btn-sm mt-2 " id="addStudent">Ajouter <i
+                                    class="bi bi-patch-plus-fill"></i></button>
+                        </div>
 
-        <h1>- Liste de Notes -</h1>
-        <hr>
-        <div class="row">
-            <div class="col-4">
-                <h1>Ajouter un élève</h1>
-                <hr>
-
-                <label for="name">Nom
-                    <input type="name" class="form-control" id="name" placeholder="nom">
-                </label>
-                <label for="firstname">Prénom
-                    <input type="firstname" class="form-control" id="firstname" placeholder="prenom">
-                </label>
-                <button class="btn btn-dark mt-2" id="addStudent">Ajouter</button>
-            </div>
+                    </div>
 
 
-            <div class="col-4">
-                <h1>Ajouter une matière</h1>
-                <label for="matter">Matière
-                    <input type="matter" class="form-control" id="matter" placeholder="Matière">
-                </label>
-                <button class="btn btn-dark mt-2" id="addMatter">Ajouter</button>
-                <hr>
-            </div>
+                </div>
 
-            <div class="col-4">
-                <h1>Ajouter une note </h1>
-                <hr>
-                <label class="my-1 mr-2" for="selectStudent">Eleve</label>
-                <select class="custom-select my-1 mr-sm-2" id="selectStudent" class="bouton">
-                    <option selected>Choose...</option>
-                </select>
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Matière</label>
-                <select class="custom-select my-1 mr-sm-2" id="selectMatter" class="bouton">
-                    <option selected>Choose...</option>
-                  
-                </select>
-                <label for="note">Note
-                    <input type="note" class="form-control" id="addNote" placeholder="Note">
-                </label>
-                <button class="btn" id="addTabNotes">Ajouter</button>
+                <div class="col-4 hide">
+                    <h2>Ajouter une matière <button class="btn btn-outline-light off" id="off2">ON</button></h2>
+                    <hr>
+                    <div class="hide2">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="matter">Matière </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="matter" class="form-control" id="matter" placeholder="Matière">
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                                <button class="btn btn-outline-light btn-sm" id="addMatter">Ajouter <i
+                                        class="bi bi-patch-plus-fill"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <h2>Ajouter une note <button class="btn btn-outline-light off" id="off3">ON</button></h2>
+                    <hr>
+                    <div class="hide3">
+                        <div class="row mb-2">
+                            <div class="col-3">
+                                <label class="my-1 mr-2" for="selectStudent">Elève : </label>
+                            </div>
+                            <div class="col-9">
+                                <select class="form-control" id="selectStudent">
+                                    <option>Elève ...</option> </select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-3">
+                                <label class="my-1 mr-2" for="selectMatter">Matière : </label>
+                            </div>
+                            <div class="col-9">
+                                <select class="form-control" id="selectMatter">
+                                    <option>Matière ...</option> </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="note">Note : </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="note" class="form-control" id="addNote" placeholder="Note">
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                                <button class="btn btn-outline-light btn-sm" id="addTabNotes">Ajouter <i
+                                        class="bi bi-patch-plus-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <hr>
-        <h1>Selection</h1>
-        <hr>
-        <div class="row">
-            <div class="col-6">
-                <form class="form-inline">
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Elève</label>
-                    <select class="custom-select my-1 mr-sm-2" id="selectStudent2">
-                        <option selected>Choose...</option>
-                   
-                    </select>
-            </div>
-            <div class="col-6">
-                <form class="form-inline">
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Matière</label>
-                    <select class="custom-select my-1 mr-sm-2" id="selectMatter2">
-                        <option selected>Choose...</option>
-                        
-                    </select>
-                    <button id="afficher">Afficher</button>
-            </div>
-        </div>
-        <hr>
-        <h1>Notes</h1>
-        <table class="table table-sm table-dark" id="tabNotes">
-            <thead>
-              <tr>
-                <th scope="col">Student</th>
-                <th scope="col">Matière</th>
-                <th scope="col">Note</th>
-              </tr>
-            </thead>
-            <tbody id="tableau">
-              <tr>
-              
-              </tr>
-            </tbody>
-          </table>
+            <hr>
+            <h1>Selection</h1>
+            <hr>
+            
+                <div class="row mb-2">
+                    <div class="col-1">
+                        <label class="my-1 mr-2" for="selectStudent">Elève : </label>
+                    </div>
+                    <div class="col-5">
+                        <select class="form-control" id="selectStudent2">
+                            <option id="premiereOption">Elève ...</option> </select>
+                    </div>
+                    <div class="col-1">
+                        <label class="my-1 mr-2" for="selectMatter">Matière : </label>
+                    </div>
+                    <div class="col-5">
+                        <select class="form-control" id="selectMatter2">
+                            <option>Matière ...</option> </select>
+                    </div>
+                </div>
+                <div class=" flex-end moyenneAffichage">
+
+                </div>
+            
+            <hr>
+            <h1>Notes</h1>
+            <table class="table table-sm table-dark" id="tabNotes">
+                <thead>
+                    <tr>
+                        <th scope="col">Student</th>
+                        <th scope="col">Matière</th>
+                        <th scope="col">Note</th>
+                    </tr>
+                </thead>
+                <tbody id="tableau">
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
 
 
 </body>
+</div>
+</main>
 
 </html>
 <script type="module" src="./modules/main.js"></script>

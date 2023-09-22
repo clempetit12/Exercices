@@ -1,8 +1,8 @@
 
 
 export class Matter {
-    constructor(matterNumero,note){
-        this.matterNumero = matterNumero;
+    constructor(matter,note){
+        this.matter = matter;
         this.note = ""
     }
 }

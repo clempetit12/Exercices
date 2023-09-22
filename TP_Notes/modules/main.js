@@ -29,11 +29,9 @@ let tabNotes = []
 //Ajout d'un étudiant dans le tableau Elèves
 addStudent.addEventListener('click', () => {
     const student = tabEleve.find(student => ((student.name==name.value) && (student.firstname==firstname.value)))
-    console.log(student);
     if(!student){
         let newStudent = new Student(name.value, firstname.value )
             tabEleve.push(newStudent)
-            console.table(tabEleve)
             displayStudent(newStudent)
         }
         name.value = ''
@@ -43,11 +41,9 @@ addStudent.addEventListener('click', () => {
 //Ajout d'une matière dans le tableau Matières
 addMatter.addEventListener('click', () => {
     const matters = tabMatters.find(matters => (matters.matter==matter.value) )
-    console.log(matters);
     if(!matters){
         let newMatter = new Matter(matter.value)
             tabMatters.push(newMatter)
-            console.table(tabMatters)
             displayMatter(newMatter)
         }
         matter.value = ''
@@ -74,24 +70,9 @@ addTabNotes.addEventListener('click', () => {
  let newContact = { "eleve":`${selectStudent.options[selectStudent.selectedIndex].text}`,"matiere":`${selectMatter.options[selectMatter.selectedIndex].text}`, "notes" : `${addNote.value}`  }
   tabNotes.push(newContact)
   console.table(tabNotes);
-  updateTab()
+ updateTab()
+ addNote.value = " "
 })
-
-// fonction pour afficher le tableau des élèves avec leurs notes
-function updateTab() {
-    tableau.innerHTML = '';
-    for (let i = 0; i < tabNotes.length; i++) {
-        tableau.innerHTML += `
-        <tr>
-            <td>${tabNotes[i].eleve}</td>
-            <td>${tabNotes[i].matiere}</td>
-            <td>${tabNotes[i].notes}</td>
-            
-        </tr>        
-        `
-    }
-}
-
 
 // Fonctionnalités pour les boutons ON et OFF
 let bool = 1
@@ -119,62 +100,17 @@ function displayOff (bouton, clasnames) {
     }
 }  
 
-//Sélection et calcul de la moyenne 
-
-    
-    //const studentSearched = `${selectStudent2.options[selectStudent2.selectedIndex].text}`
-    
-// AFFICHAGE DANS LE TABLEAU NOTE DE L'ÉLÈVE SÉLECTIONNÉ
-
-    
-function moyenneGenerale (eleve) {
-   
-        let somme = 0;
-        let nombreMatieres = tabNotes.notes.lenght
-        console.log(nombreMatieres);
-        for (let i = 0; i < nombreMatieres; i++) {
-            somme += eleve.notes[i];
-        }
-        let moyenne = somme/nombreMatieres;
-        console.log(moyenne);
-        return moyenne
-        
-
-}
-s
         // Gestionnaire d'événements pour le changement de sélection
         selectStudent2.addEventListener("change", function() {
-            let prenomSelectionne = `${selectStudent2.options[selectStudent2.selectedIndex].text}`;
-            const targetSubjects = tabNotes.filter(function(eleves) {
-                return eleves.eleve == prenomSelectionne;
-            });
-            console.log(targetSubjects);
-            affichage(targetSubjects)
-       
+            updateTab();
           
         })
 
         selectMatter2.addEventListener("change", function() {
-            if (selectStudent2.value !== premiereOption.value) {
-                let prenomSelectionne = `${selectStudent2.options[selectStudent2.selectedIndex].text}`;
-                let matterSelect = `${selectMatter2.options[selectMatter2.selectedIndex].text}`;
-                const targetMatter = tabNotes.filter(function(eleves) {
-                    return ((eleves.eleve == prenomSelectionne) && (eleves.matiere == matterSelect))
-                });
-                console.log(targetMatter);
-                affichage(targetMatter)
-         
-            } else {
-                let matterSelect = `${selectMatter2.options[selectMatter2.selectedIndex].text}`;
-                const targetMatter = tabNotes.filter(function(eleves) {
-                    return (eleves.matiere == matterSelect)
-                });
-                console.log(targetMatter);
-                affichage(targetMatter)
-            }
+            updateTab();
         })
     
-
+// Fonction pour afficher en fonction du filtre tableau
         function affichage (tabFiltre) {
             if ((tabFiltre) && (tabFiltre.length>0) ) {
                 console.log("ff");
@@ -202,24 +138,34 @@ s
             }
         }
 
+        // Fonction affichage du tableau en fonction des sélecteurs
         function selectValue (eleveSelectionne, matiereSelectionne) {
+            console.log(eleveSelectionne);
+            console.log(matiereSelectionne);
 if ((eleveSelectionne == premiereOptionStudent.value) && (matiereSelectionne == premiereOptionMatter.value) ){
-affichage(tabNotes)
-} else if ((eleveSelectionne !== premiereOptionStudent.value) && (matiereSelectionne == premiereOptionMatter.value) ){
-    let matterSelect = `${selectMatter2.options[selectMatter2.selectedIndex].text}`;
-    const targetMatter = tabNotes.filter(function(eleves) {
-        return (eleves.matiere == matterSelect)
-    });
-    console.log(targetMatter);
-    affichage(targetMatter)
-} else if ((eleveSelectionne == premiereOptionStudent.value) && (matiereSelectionne !== premiereOptionMatter.value) ){
+    console.log("cas 0 selection");
+    affichage(tabNotes)
+
+} else if ((eleveSelectionne != premiereOptionStudent.value) && (matiereSelectionne == premiereOptionMatter.value) ){
+    console.log("cas matiere selection");
+    console.log("cas personne selection");
     let prenomSelectionne = `${selectStudent2.options[selectStudent2.selectedIndex].text}`;
     const targetSubjects = tabNotes.filter(function(eleves) {
         return eleves.eleve == prenomSelectionne;
     });
     console.log(targetSubjects);
     affichage(targetSubjects)
+   
+} else if ((eleveSelectionne == premiereOptionStudent.value) && (matiereSelectionne != premiereOptionMatter.value) ){
+    console.log("cas personne selection");
+    let matterSelect = `${selectMatter2.options[selectMatter2.selectedIndex].text}`;
+    const targetMatter = tabNotes.filter(function(eleves) {
+        return (eleves.matiere == matterSelect)
+    });
+    console.log(targetMatter);
+    affichage(targetMatter)
 } else {
+    console.log("cas tout le monde selection");
     let prenomSelectionne = `${selectStudent2.options[selectStudent2.selectedIndex].text}`;
     let matterSelect = `${selectMatter2.options[selectMatter2.selectedIndex].text}`;
     const targetMatter = tabNotes.filter(function(eleves) {
@@ -228,3 +174,7 @@ affichage(tabNotes)
     console.log(targetMatter);
     affichage(targetMatter)
 } }
+
+function updateTab () {
+    selectValue(`${selectStudent2.options[selectStudent2.selectedIndex].text}`,`${selectMatter2.options[selectMatter2.selectedIndex].text}`)
+}

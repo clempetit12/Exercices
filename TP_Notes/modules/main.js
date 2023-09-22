@@ -115,8 +115,8 @@ function displayOff (bouton, clasnames) {
             if ((tabFiltre) && (tabFiltre.length>0) ) {
                 console.log("ff");
                 tableau.innerHTML = " "
-                let somme =0
-                let somme2 = 0
+                let sommeNotes =0
+                let nombreMatieres = 0
                 tabFiltre.forEach(element => {
                     
                     tableau.innerHTML += `
@@ -127,12 +127,10 @@ function displayOff (bouton, clasnames) {
                         
                     </tr>    ` 
 
-                    somme += Number(element.notes)
-                    console.log("somme" + somme);
-                    somme2++    
-                    console.log("somme2" + somme2);
+                    sommeNotes += Number(element.notes)
+                    nombreMatieres++    
                    
-                });    let moyenne = (somme/somme2).toFixed(2)
+                });    let moyenne = (sommeNotes/nombreMatieres).toFixed(2)
                 console.log(moyenne);
                 moyenneAffichage.innerHTML = `La moyenne générale est de : ${moyenne}` 
             }

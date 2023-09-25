@@ -1,25 +1,27 @@
 import { Person } from "./classes/Person.js";
 
 let contacts = document.getElementById("contacts") as HTMLElement
-let firstname = document.getElementById("firstname") as HTMLElement
-let lastname = document.getElementById("lastname")as HTMLElement
-let dateOfBirth = document.getElementById("dateOfBirth") as HTMLElement
-let email = document.getElementById("email") as HTMLElement
-let phoneNumber = document.getElementById("phoneNumber") as HTMLElement
+let firstname = document.getElementById("firstname") as HTMLInputElement
+let lastname = document.getElementById("lastname")as HTMLInputElement
+let dateOfBirth = document.getElementById("dateOfBirth") as HTMLInputElement
+let email = document.getElementById("email") as HTMLInputElement
+let phoneNumber = document.getElementById("phoneNumber") as HTMLInputElement
+let buttonContact = document.querySelectorAll(".buttonContact") as NodeListOf<HTMLElement>
 
-let buttonContact = document.querySelectorAll(".bloc1")
+
 
 let person1:Person
 let person2:Person
 let person3:Person
 let person4:Person
 
- person1 = new Person ("Albert", "DUPONT", "12/05/1993", "albertdupont@gmail.com", "+(33)0645125859")
+ person1 = new Person ("Albert", "DUPONT","05/05/1992", "albertdupont@gmail.com", "+(33)0645125859")
  person2 = new Person ("John", "SMITH", "12/05/1993", "albertdupont@gmail.com", "+(33)0645125859")
  person3 = new Person ("Clara", "GOMEZ", "12/05/1993", "albertdupont@gmail.com", "+(33)0645125859")
  person4 = new Person ("Elizabeth", "MARTIN", "12/05/1993", "albertdupont@gmail.com", "+(33)0645125859")
 
 let contactsTab: Person[] = [];
+
 
 contactsTab.push(person1,person2,person3,person4)
 console.table(contactsTab);
@@ -29,57 +31,56 @@ document.addEventListener('DOMContentLoaded', function(){
     contactsTab.forEach(element => {
         let button = document.createElement('button')
         button.type = 'button'
+        button.id = `${element.id}`
         button.innerHTML = `${element.firstname} ${element.lastname}`
-        button.className = `row btn btn-outline-light btn-lg btn-block bouton${element.id}`
+        button.className = `row btn btn-outline-light btn-lg btn-block buttonContact `
         contacts.appendChild(button)    
     });
     let buttonAdd = document.createElement('button')
     buttonAdd.type = 'button'
     buttonAdd.innerHTML = `Add`
     buttonAdd.className = "row btn btn-outline-light btn-lg btn-block"
-
+    console.log(buttonContact);
+    buttonContact = document.querySelectorAll(".buttonContact") as NodeListOf<HTMLElement>
+    console.log(buttonContact);
+    chargerBouton()
+    
 })
 
+function chargerBouton (){
+buttonContact.forEach(function(bouton) {
 
-contacts.addEventListener('click', ()=> {
-   
-
-
-})
-
-function display () {
-    contactsTab.forEach(element => {
-        if (element.id = contacts.className) {
-            
-        }
+    console.log(`le bouton `);
+    bouton.addEventListener("click", function() {
+        console.log("selecteur");
+      const personneTrouve =  contactsTab.filter((personneid)=> Number(bouton.id) == personneid.id)
+      console.log(`la personne trouvée est ${personneTrouve[0].firstname}`);
+      display(personneTrouve[0])
         
-    });
+       });
+    });}
+
+
+function display (personneTrouvee) {
+    console.log("display");
+    firstname.value = personneTrouvee.firstname
+    lastname.value = personneTrouvee.lastname
+    const date  = `${personneTrouvee.dateOfBirth.getDate()}`+"/"+`${personneTrouvee.dateOfBirth.getMonth()}`+"/"+`${personneTrouvee.dateOfBirth.getFullYear()}`
+    dateOfBirth.value = date
+    email.value = personneTrouvee.email
+    phoneNumber.value = separationPhoneNumber(personneTrouvee.phoneNumber)
+
+
+
 }
 
-
-}
-
-function affichage(tabFiltre) {
-    if ((tabFiltre) && (tabFiltre.length > 0)) {
-        console.log("ff");
-        tableau.innerHTML = " "
-        let sommeNotes = 0
-        let nombreMatieres = 0
-        tabFiltre.forEach(element => {
-
-            tableau.innerHTML += `
-                    <tr>
-                        <td>${element.eleve}</td>
-                        <td>${element.matiere}</td>
-                        <td>${element.notes}</td>
-                        
-                    </tr>    `
-
-            sommeNotes += Number(element.notes)
-            nombreMatieres++
-
-        }); let moyenne = (sommeNotes / nombreMatieres).toFixed(2)
-        console.log(moyenne);
-        moyenneAffichage.innerHTML = `La moyenne générale est de : ${moyenne}`
-    }
+function separationPhoneNumber (numero) {
+    const segment1 = numero.slice(0, 5);
+    const segment2 = numero.slice(5, 7);
+    const segment3 = numero.slice(7, 9);
+    const segment4 = numero.slice(9, 11);
+    const segment5 = numero.slice(11, 13);
+    const segment6 = numero.slice(13, 15);
+    const numeroFormate = `${segment1} ${segment2} ${segment3} ${segment4} ${segment5} ${segment6}`;
+    return numeroFormate
 }

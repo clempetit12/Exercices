@@ -3,7 +3,7 @@ export class Person {
         this._id = ++Person._count;
         this._firstname = firstname;
         this._lastname = lastname;
-        this._dateOfBirth = dateOfBirth;
+        this._dateOfBirth = new Date(dateOfBirth);
         this._email = email;
         this._phoneNumber = phoneNumber;
     }
@@ -27,9 +27,7 @@ export class Person {
         return this._dateOfBirth;
     }
     set dateOfBirth(value) {
-        if (value !== "Blabla") {
-            this._dateOfBirth = value;
-        }
+        this._dateOfBirth = value;
     }
     get email() {
         return this._email;

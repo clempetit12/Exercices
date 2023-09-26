@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 let personne1 = {
     lastname: "Toto Dupont",
     age: 35,
@@ -21,8 +19,9 @@ let personne4 = {
     role: "Gérant"
 };
 let tabPerson = [];
-tabPerson.push(personne1, personne2, personne3, personne4);
-console.log(` Nom : ${personne1.lastname} Age : ${personne1.age}`);
-console.log(` Nom : ${personne2.lastname} Age : ${personne2.age}`);
-console.log(` Nom : ${personne3.lastname} Age : ${personne3.age}`);
-console.log(` Nom : ${personne4.lastname} Age : ${personne4.age}`);
+tabPerson.push(personne1);
+export {};
+// console.log(` Nom : ${personne1.lastname} Age : ${personne1.age}` );
+// console.log(` Nom : ${personne2.lastname} Age : ${personne2.age}` );
+// console.log(` Nom : ${personne3.lastname} Age : ${personne3.age}` );
+// console.log(` Nom : ${personne4.lastname} Age : ${personne4.age}` );

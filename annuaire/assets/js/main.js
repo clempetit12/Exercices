@@ -6,13 +6,13 @@ let dateOfBirth = document.getElementById("dateOfBirth");
 let email = document.getElementById("email");
 let phoneNumber = document.getElementById("phoneNumber");
 let buttonContact = document.querySelectorAll(".buttonContact");
-let buttonAdd = document.getElementById("openModal");
 let modal = document.getElementById("modal");
 let closeModal = document.getElementById("closeModal");
 let editButton = document.getElementById("edit");
 let deleteButton = document.getElementById("delete");
 let inputElements = document.querySelectorAll("input");
 let formulaire = document.getElementById("formulaire");
+let buttonAdd = document.getElementById("openModal");
 let save = document.getElementById("save");
 let add = document.getElementById("add");
 let firstnameModal = document.getElementById("firstnameModal");
@@ -79,10 +79,11 @@ function separationPhoneNumber(numero) {
 }
 // Essayer d'afficher la modale mais ça ne fonctionne pas 
 buttonAdd.addEventListener('click', () => {
+    console.log("bbb");
     modal.style.display = "block";
 });
 closeModal.addEventListener("click", function () {
-    modal.style.display = "none";
+    modal.style.display = "block";
 });
 window.addEventListener("click", function (event) {
     if (event.target == modal) {

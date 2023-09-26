@@ -7,13 +7,14 @@ let dateOfBirth = document.getElementById("dateOfBirth") as HTMLInputElement
 let email = document.getElementById("email") as HTMLInputElement
 let phoneNumber = document.getElementById("phoneNumber") as HTMLInputElement
 let buttonContact = document.querySelectorAll(".buttonContact") as NodeListOf<HTMLElement>
-let buttonAdd = document.getElementById("openModal") as HTMLElement
+
 let modal = document.getElementById("modal") as HTMLElement
 let closeModal = document.getElementById("closeModal") as HTMLElement
 let editButton = document.getElementById("edit") as HTMLElement
 let deleteButton = document.getElementById("delete") as HTMLElement
 let inputElements = document.querySelectorAll("input") 
 let formulaire = document.getElementById("formulaire")
+let buttonAdd = document.getElementById("openModal") as HTMLButtonElement
 let save = document.getElementById("save")
 let add = document.getElementById("add")
 let firstnameModal = document.getElementById("firstnameModal") as HTMLInputElement
@@ -89,13 +90,15 @@ function separationPhoneNumber (numero) {
     return numeroFormate
 }
 
+
 // Essayer d'afficher la modale mais ça ne fonctionne pas 
 buttonAdd.addEventListener('click', ()=> {
-    modal.style.display = "block"
+    console.log("bbb");
+modal.style.display="block"
 
 })
 closeModal.addEventListener("click", function() {
-    modal.style.display = "none";
+    modal.style.display = "block";
   });
 
   window.addEventListener("click", function(event) {
@@ -121,7 +124,6 @@ closeModal.addEventListener("click", function() {
         const nouveauNom = lastname.value;
         console.table(contactsTab);
         updateTab()
-       
         editButton.style.display = "block";
         save.style.display = "none";
     })

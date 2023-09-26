@@ -19,56 +19,112 @@
   </head>
   <body>
     <main class="container row">
-       
-      <div class="bloc1 col-6  bg-dark text-light ">
+      <div class="bloc1 col-6 bg-dark text-light">
         <h1>Contacts</h1>
-        <hr>
+        <hr />
         <div class="row" id="contacts">
-    
-    <div class="row">
-        <button type="button" class="btn btn-success ">Add</button>
-    </div> 
-        
+        </div>
+        <div class="contactAdd" id="contactAdd">
+        </div>
+          <div class="row">
+      
+          <button type="button" class="btn btn-success" id="openModal">
+            Add
+          </button> 
+        </div>
+        </div>
       </div>
+      <div class="bloc2 col-6">
+        <h1>Details</h1>
+        <hr />
+        <form action="" id="formulaire">
+        <div class="row">
+          <div class="col-8">
+            Firstname :
+            <input type="firstname" class="form-control" id="firstname" placeholder="Fistname"  >
+          </div>
+          <div class="col-4">
+            <img src="./assets/img/unknown.jpg" alt="inconnu" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            Lastname :
+            <input type="lastname" class="form-control" id="lastname" placeholder="Lastname"  >
+          </div>
+          <div class="col-4"></div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            Date of Birth :
+            <input type="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="DateOfBirth" readonly >
+          </div>
+          <div class="col-4"></div>
+        </div>
+        <div class="row">
+          Email :
+          <input type="email" class="form-control" id="email" placeholder="Email" readonly >
+        </div>
+        <div class="row">
+          Phone Number :
+            <input type="phoneNumber" class="form-control" id="phoneNumber" placeholder="PhoneNumber" readonly >
+        </div>
+        <hr />
+        <button type="button" class="btn btn-success" id="edit">Éditer</button>
+        <button type="submit" id="save" style="display: none;">Enregistrer</button>
+        <button type="button" class="btn btn-success" id="delete">Delete</button>
+      </div>
+    </form>
+<div class="myModal" id="modal">
+  <div class="myModal-Content">
+    <span class="close" id="closeModal"></span>
+    <h1>Add Contact</h1>
+    <hr>
+    <div class="row">
+      
+        Firstname :
+        <input type="firstname" class="form-control" id="firstnameModal" placeholder="Fistname" >
+     
+ 
     </div>
-    <div class="bloc2 col-6">
-<h1>Details</h1>
-<hr>
-<div class="row">
-    <div class="col-8">
-        <input type="firstname" class="form-control" id="firstname" placeholder="Firstname" readonly>
-    </div>
-    <div class="col-4">
-<img src="./assets/img/unknown.jpg" alt="inconnu">
-    </div>
-</div>
-<div class="row">
-    <div class="col-8">
-        <input type="lastname" class="form-control" id="lastname" placeholder="Lastname">
-    </div>
-    <div class="col-4">
-
-    </div>
-</div>
-<div class="row">
-    <div class="col-8">
-        <input type="dateOfBirth" class="form-control" id="dateOfBirth" placeholder="Date of Birth">
-    </div>
-    <div class="col-4">
-
-    </div>
-</div>
-<div class="row">
-    <input type="email" class="form-control" id="email" placeholder="email">
-</div>
-<div class="row">
-    <input type="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone Number">
-</div>
-<hr>
-<button type="button" class="btn btn-success ">Edit</button>
-<button type="button" class="btn btn-success ">Delete</button>
-    </div>
+    <div class="row">
+   
+        Lastname :
+        <input type="lastname" class="form-control" id="lastnameModal" placeholder="Lastname" >
     
+    
+    </div>
+    <div class="row">
+
+        Date of Birth :
+        <input type="dateOfBirth" class="form-control" id="dateOfBirthModal" placeholder="DateOfBirth" >
+
+   
+    </div>
+    <div class="row">
+      Email :
+      <input type="email" class="form-control" id="emailModal" placeholder="Email" >
+    </div>
+    <div class="row">
+      Phone Number :
+        <input type="phoneNumber" class="form-control" id="phoneNumberModal" placeholder="PhoneNumber" >
+    </div>
+        <div class="row">
+          <input
+            type="avatarUrl"
+            class="form-control"
+            id="avatarUrl"
+            placeholder="Avatar URL"
+          />
+          Avatar URL:
+          
+        </div>
+        <button class="btn btn-danger" id="add">Add</button>
+
+  </div>
+</div>
+
+
     </main>
   </body>
 </html>

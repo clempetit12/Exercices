@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP Site de Recettes</title>
+    <script type="module" src="./main.js" defer></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css"  />
+  </head>
+  <body>
+    <div class="container text-light">
+      <div class="bloc1 bg-dark mr-2 p-2">
+        <h1>Filters</h1>
+        <hr />
+        <label for="customRange3" class="form-label" id="preparationTime"
+          >Preparation Time</label
+        >
+        <input
+          type="range"
+          class="form-range"
+          min="0"
+          max="5"
+          step="0.5"
+          id="customRange3"
+        />
+        <label for="customRange3" class="form-label" id="cookingTime"
+          >Cooking Time</label
+        >
+        <input
+          type="range"
+          class="form-range"
+          min="0"
+          max="5"
+          step="0.5"
+          id="customRange3"
+        />
+        <p>Name :</p>
+        <div class="input-group mb-3 " id="search">
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+          />
+        </div>
+        <p>Ingrédients :</p>
+        <select class="form-select" size="3" aria-label="Size 3 select example" id="ingredients">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <hr>
+          <div class="row p-4">
+          <button class="btn btn-outline-light" id="filter">FILTER</button>
+        </div>
+      </div>
+      <div class="bloc2 bg-dark p-2">
+        <h1>Recipes</h1>
+        <div class="recettes" id = recettes></div>
+        <hr />
+      </div>
+    </div>
+  </body>
+</html>

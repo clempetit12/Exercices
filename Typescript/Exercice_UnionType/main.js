@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 let personne1 = {
     lastname: "Toto Dupont",
     age: 35,
@@ -27,4 +29,3 @@ tabPerson.forEach(personne => {
     let bonus = ("role" in personne) ? "Son occupation est : " + personne.role : "Son rôle est : " + personne.occupation;
     console.log(bonus);
 });
-

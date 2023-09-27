@@ -24,3 +24,6 @@ console.table(pile2);
 pile2.delete(2)
 console.table(pile2);
 
+let boolean = new Pile<boolean>([])
+
+boolean.add(true)

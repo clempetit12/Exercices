@@ -1,19 +1,17 @@
 export class Pile<T> {
-    objets: [T];
-
-
-    constructor(objets: [T]) {
+  
+    constructor(public objets: T[]) {
         this.objets = objets
 
     }
 
-    add(value: T) {
+    add(value: T): void {
         this.objets.push(value)
 
     }
 
-    delete(indextomremove: number) {
-        this.objets.splice(indextomremove, 1)
+    delete(indextoremove: number): void {
+        this.objets.splice(indextoremove, 1)
     }
 }
 

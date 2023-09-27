@@ -1,7 +1,7 @@
 import { Admin } from "./interfaces/Admin.js";
 import { User } from "./interfaces/User.js";
 
-type person = User | Admin
+type Person = User | Admin
 
 let personne1: User = {
     lastname : "Toto Dupont",
@@ -9,10 +9,10 @@ let personne1: User = {
     occupation: "Facteur"
 }
 
-let personne2: User = {
-    lastname : "Toto Dupont",
+let personne2: Admin = {
+    lastname : "Jeanne DO",
     age: 35,
-    occupation: "Facteur"
+    role: "Admin"
 }
 
 let personne3: User = {
@@ -27,15 +27,16 @@ let personne4: Admin = {
     role: "Gérant"
 }
 
-let tabPerson: person[] = []
+let tabPerson: Person[] = []
 
-tabPerson.push(personne1)
+ tabPerson.pop
+ tabPerson.push(personne1,personne2,personne3,personne4)
+ console.table(tabPerson);
 
-// console.log(` Nom : ${personne1.lastname} Age : ${personne1.age}` );
-// console.log(` Nom : ${personne2.lastname} Age : ${personne2.age}` );
-// console.log(` Nom : ${personne3.lastname} Age : ${personne3.age}` );
-// console.log(` Nom : ${personne4.lastname} Age : ${personne4.age}` );
-
+ tabPerson.forEach(personne => console.log(` Nom : ${personne.lastname} Age : ${personne.age}` ))
 
 
-
+tabPerson.forEach(personne => {
+ let bonus = ("role" in personne) ? "Son occupation est : " + personne.role : "Son rôle est : " + personne.occupation ;
+ console.log(bonus);
+})

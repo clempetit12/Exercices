@@ -21,6 +21,21 @@
 
   </head>
   <body>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+          <span class="close" id="closeModalButton">&times;</span>
+          <h1 id="titre"></h1>
+          <hr>
+          <div class="row">
+            <div class="col-4" id="ingredientModal">
+
+            </div>
+            <div class="col-8" id="instruction">
+              <h2>Instructions</h2>
+            </div>
+          </div>
+      </div>
+  </div>
     <div class="container text-light">
       <div class="bloc1 bg-dark mr-2 p-2">
         <h1>Filters</h1>
@@ -67,7 +82,9 @@
       </div>
       <div class="bloc2 bg-dark p-2">
         <h1>Recipes</h1>
-        <div class="recettes" id = recettes></div>
+        <div class="recettes" id = recettes>
+          
+        </div>
         <hr />
       </div>
     </div>

@@ -8,3 +8,18 @@
     display: flex;
     flex-direction: row;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 15%;
+    width: 70%;
+    height: 100%;
+    z-index: 1;
+   
+}
+
+.modal-content {
+padding: 20px;
+}

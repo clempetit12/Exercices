@@ -11,6 +11,8 @@ let modal = document.getElementById("modal") as HTMLDivElement
 let titre = document.getElementById("titre") as HTMLDivElement
 let ingredientModal = document.getElementById("ingredientModal") as HTMLDivElement
 let instructionModal = document.getElementById("instruction") as HTMLDivElement
+let closeModalButon = document.getElementById("closeModalButon")  as HTMLDivElement
+
 
 interface Recipe {
     id?: string;
@@ -39,16 +41,15 @@ for (const key in recipes) {
 
 console.table(tabRecipes);
 
-
+//Chargemnt à 'ouverte de la page des recettes 
 window.addEventListener('load', function () {
     console.log("object");
     tabRecipes.forEach(element => {
         createBouton(element)
-       
-
     });
 })
 
+//Fonction pour créer les boutons
 function createBouton (element: Recipe) {
     let button = document.createElement('button')
     button.type = 'button';
@@ -61,24 +62,18 @@ function createBouton (element: Recipe) {
         modal.style.display = "block"
         titre.innerHTML = element.name
         instructionModal.innerHTML = `${element.instructions}`
-      
     })
     recettes.appendChild(button);
-
     button.addEventListener('click', () => {
         selectedRecipe = element
         console.log(selectedRecipe);
-     
-      
-        
         tabRecipes.forEach(element => {
             const ingredientsList = element.ingredients;
             console.log(ingredientsList.forEach(element => {
-                ingredientModal.innerHTML += `${element.name}`
-                ingredientModal.innerHTML += `${element.amount}`
+                ingredientModal.innerHTML += `<li> ${element.name},${element.amount}  </li>`
             }))
         })
-        recettes.appendChild(button);
+       
     })
 };
 
@@ -95,3 +90,8 @@ tabRecipes.forEach(element => {
     }));
 
 });
+
+//Croix pour fermer la modal 
+closeModalButon.addEventListener('click', () => {
+    modal.style.display = "none"
+  })

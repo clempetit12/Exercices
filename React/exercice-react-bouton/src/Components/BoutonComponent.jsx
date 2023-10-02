@@ -3,11 +3,15 @@ import { useState } from "react"
 const BoutonComponent = (props) => {
     const { object } = props
 
-    const [listingO, setListingO] = useState([])
+    const [listingO, setListingO] = useState(["toto","tata"])
+    const [newItem, setNewItem] = useState(object);
 
     const addObjectToList = () => {
-        console.log("hello");
-        setListingO([...listingO, ])
+    
+        if (newItem !== '') {
+            setListingO([...listingO, newItem]);
+            setNewItem(''); 
+          }
 
     }
 
@@ -24,3 +28,4 @@ const BoutonComponent = (props) => {
 }
 
 export default BoutonComponent
+

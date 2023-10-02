@@ -10,5 +10,20 @@
 }
 
 .modal {
+<<<<<<< HEAD
     display: block;
+=======
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 15%;
+    width: 80%;
+    height: 60%;
+    z-index: 1;
+   
+}
+
+.modal-content {
+padding: 20px;
+>>>>>>> cca22663f3ad7e408346ab6df1d60743013c7f04
 }

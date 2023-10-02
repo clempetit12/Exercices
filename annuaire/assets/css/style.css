@@ -1,13 +1,9 @@
-html {
-  padding: 0;
-  margin: 0;
-}
 
-.container {
+/* .container {
   display: flex;
   align-items: center;
   padding: 5%;
-}
+} */
 
 .bloc1 {
   height:80% ;
@@ -23,7 +19,7 @@ html {
     background-color: white;
   }
   
-  .myModal {
+.myModal {
     z-index: 1;
     display: none;
     position: fixed;
@@ -38,7 +34,7 @@ html {
     border-radius: 1rem;
     padding: 2rem;
     background-color: white;
-  }
+  } 
 
   img {
 width: 10%;

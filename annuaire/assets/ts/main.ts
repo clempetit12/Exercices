@@ -8,7 +8,7 @@ let email = document.getElementById("email") as HTMLInputElement
 let phoneNumber = document.getElementById("phoneNumber") as HTMLInputElement
 let buttonContact = document.querySelectorAll(".buttonContact") as NodeListOf<HTMLElement>
 
-let modal = document.getElementById("modal") as HTMLElement
+
 let closeModal = document.getElementById("closeModal") as HTMLElement
 let editButton = document.getElementById("edit") as HTMLElement
 let deleteButton = document.getElementById("delete") as HTMLElement
@@ -92,21 +92,21 @@ function separationPhoneNumber (numero) {
 
 
 // Essayer d'afficher la modale mais ça ne fonctionne pas 
-buttonAdd.addEventListener('click', ()=> {
+/* buttonAdd.addEventListener('click', ()=> {
     console.log("bbb");
 modal.style.display="block"
 
 })
-closeModal.addEventListener("click", function() {
+/* closeModal.addEventListener("click", function() {
     modal.style.display = "block";
-  });
+  }); */
 
-  window.addEventListener("click", function(event) {
+/*   window.addEventListener("click", function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  });
-
+  }); */
+ 
   //editer bouton mais ça ne fonctionne pas 
   editButton.addEventListener('click', () => {
     console.log("bonjour edit");
@@ -163,7 +163,7 @@ chargerBouton()
     })
 
 // Fonction pour créer un bouton
-function createBouton (element) {
+function createBouton (element: Person) {
     let button = document.createElement('button')
 button.type = 'button'
 button.id = `${element.id}`

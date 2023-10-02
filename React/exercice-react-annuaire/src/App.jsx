@@ -21,8 +21,8 @@ class Person {
 
 function App() {
 
-  const matables = [new Person("clémence", "petit"),
-  new Person("albert", "dupont")]
+  const matables = [{firstname: "clémence", lastname: "petit"},
+  {firstname: "lola", lastname: "petit"}]
   return (
     <div className="App">
 

@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-const BoutonComponentPlus = () => {
- 
+const BoutonComponentPlus = (props) => {
+ let maxValue = props.maxValue
 
   const [compteur, setcompteur] = useState(0);
   const [boutonValue, setBoutonValue] = useState("");
 
   const addBouton = () => {
     console.log("add");
-    if (compteur !== 100) {
+    if (compteur !== Number(maxValue)) {
       setcompteur(compteur + 1);
      display()
 

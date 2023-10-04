@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormChildComponent from "./Components/FormChildComponent";
 import TableComponent from "./Components/TableComponent";
+import classes from "./App.css"
 
 function App() {
 
@@ -14,11 +15,11 @@ function App() {
 
   return (
     <>
-    <div className="App">
+    <div className={classes.App}>
       <h1>Tableau de contacts</h1>
       <hr />
       <TableComponent users = {users}/>
- <FormChildComponent usersTab={usersTab} />
+      <FormChildComponent usersTab={usersTab} />
 
     </div>
     </>

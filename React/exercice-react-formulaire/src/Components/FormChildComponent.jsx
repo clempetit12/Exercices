@@ -1,4 +1,7 @@
 import { useState } from "react";
+import classe from "./App.module.css"
+
+
 
 const FormChildComponent = (props) => {
   const { usersTab } = props;
@@ -8,9 +11,13 @@ const FormChildComponent = (props) => {
   const [dateOfBirth, setDateOfBirth] = useState("");
 
   const submitHandler = (event) => {
+    event.preventDefault()
     usersTab({firstname, 
         lastname, 
-        dateOfBirth}
+        dateOfBirth},
+        setFirstname(" "),
+        setLastname(""),
+        setDateOfBirth("")
      
     );
   };
@@ -27,8 +34,9 @@ const FormChildComponent = (props) => {
 
   return (
     <>
+    <form action="" className={classe.body}>
       <h1>Formulaire</h1>
-      <div className="div">
+      <div className= "mb-2">
         <label htmlFor="firstname">Firstname</label>
         <input type="text" value={firstname} onInput={changeInputFirstname} />
       </div>
@@ -37,14 +45,18 @@ const FormChildComponent = (props) => {
         <input type="text" value={lastname} onInput={changeInputLastname} />
       </div>
       <div>
-        <label htmlFor="dateOfBirth">Date of Birth</label>
+        <label htmlFor="dateOfBirth" placeholder="jj/mm/aaaa">Date of Birth</label>
         <input
           type="text"
           value={dateOfBirth}
           onInput={changeInputDateOfBirth}
         />
-        <button onClick={submitHandler}>Ajouter Contacts</button>
-      </div>
+        </div>
+        <div className="mt-4 ">
+        <button className="btn btn-success" onClick={submitHandler}>Ajouter Contacts</button>
+        </div>
+      
+      </form>
     </>
   );
 };

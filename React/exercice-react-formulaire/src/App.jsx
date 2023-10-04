@@ -18,7 +18,7 @@ function App() {
     <div className={classes.App}>
       <h1>Tableau de contacts</h1>
       <hr />
-      <TableComponent users = {users}/>
+      <TableComponent users = {users}/> 
       <FormChildComponent usersTab={usersTab} />
 
     </div>

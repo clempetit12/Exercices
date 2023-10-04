@@ -3,7 +3,7 @@ import Timer from "../Modules/Timer";
 
 const TimerFormComponent = (props) => {
 
-    const {timerTab} = props
+    const {timerValue} = props
 
   const nameReference = useRef();
   const timeReference = useRef();
@@ -12,7 +12,7 @@ const TimerFormComponent = (props) => {
     e.preventDefault()
     const name = nameReference.current.value
     const time = timeReference.current.value
-    timerTab({name,time})
+    timerValue({name,time})
 
   };
   return (

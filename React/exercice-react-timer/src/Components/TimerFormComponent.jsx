@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Timer from "../Modules/Timer";
 
 const TimerFormComponent = (props) => {
 
-    const {timerValue} = props
+    const {timerValue, playTimer} = props
 
   const nameReference = useRef();
   const timeReference = useRef();
@@ -13,8 +13,8 @@ const TimerFormComponent = (props) => {
     const name = nameReference.current.value
     const time = timeReference.current.value
     timerValue({name,time})
-
   };
+
   return (
     <>
       <h1>Nouveau Timer</h1>

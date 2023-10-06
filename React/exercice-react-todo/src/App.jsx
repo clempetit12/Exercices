@@ -17,19 +17,16 @@ function App() {
       <h1>List of Tasks</h1>
       <hr />
         <div className="row mb-2">
-          <div className="col-2">
+          <div className="col-3">
           <th>TaskName</th>
           </div>
-          <div className="col-2">
+          <div className="col-3">
           <th>deadline</th>
           </div>
-          <div className="col-2">
+          <div className="col-3">
           <th>TaskStatus</th>
           </div>
-          <div className="col-2">
-          <th>Change taskStatus?</th>
-          </div>
-          <div className="col-2">
+          <div className="col-3">
           <th>Delete?</th>
           </div>
           </div>

@@ -1,18 +1,20 @@
-import { useContext,useState } from 'react'
-import { TodoContext } from '../Contexts/TodoContext' 
+import { useContext, useEffect, useState } from 'react'
+import { TodoContext } from '../Contexts/TodoContext'
+import DisplayTodoComponent from './DisplayTodoComponent'
 
 const status = ['Not Started', 'In progress', 'Completeed']
 
 const ButtonStatusComponent = (props) => {
- 
- const {completeed} = props
+
+    const { completeed, deleteTask, maFonction } = props
     const context = useContext(TodoContext)
-    const {idTodo, tasks} = props
+    const { idTodo, tasks } = props
     const foundTask = context.tasks.find(t => t.id === idTodo)
 
     const [taskStatus, setTaskStatus] = useState(completeed)
+    const [icon, setIcon] = useState("")
 
- 
+
 
     const changeStatus = () => {
         console.log("change status");
@@ -23,18 +25,35 @@ const ButtonStatusComponent = (props) => {
         const newStatus = status[newIndex];
         console.log(newStatus);
         setTaskStatus(newStatus);
-       
-        
-        
-     
+
     }
+    useEffect(()=> {
+        if(taskStatus == "Completeed"){
+            console.log("delete");
+
+           } else {
+            console.log("nooo");
+           }
+    },[taskStatus])
+     
+     
+    
+    
+      
+    
+        
 
 
     return (
-        
-        <button onClick={changeStatus} value={completeed} className='btn btn-outline-dark'>{taskStatus}</button>
+        <>
+        <button onClick={changeStatus == "Completeed" ? (<i class="bi bi-x"></i>):(changeStatus)} value={completeed} className='btn btn-outline-dark'>{taskStatus}</button>
+       
+
+        </>
+            
+            
     )
-}
+    }
 
 export default ButtonStatusComponent
 

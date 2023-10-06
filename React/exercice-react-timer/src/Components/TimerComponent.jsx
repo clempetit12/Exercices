@@ -5,7 +5,9 @@ import { useEffect, useState, useRef } from "react"
 const TimerComponent = (props) => {
     const { timers } = props
     const Ref = useRef(null);
-    const [time, setTime] = useState('00:00:00')
+    const [time, setTime] = useState(timers.map(el=> el.time))
+
+console.table(time);
 
     const getTimeRemaining = (e) => {
         const total = Date.parse(e) - Date.parse(new Date());
@@ -21,6 +23,7 @@ const TimerComponent = (props) => {
     }
 
     const startTimer = (e) => {
+        console.log("startTimer");
         let { total, hours, minutes, seconds }
             = getTimeRemaining(e);
         if (total >= 0) {
@@ -47,7 +50,7 @@ const TimerComponent = (props) => {
     const getDeadTime = () => {
         let deadline = new Date();
  
-        deadline.setSeconds(deadline.getSeconds() + 30);
+        deadline.setSeconds(deadline.getSeconds() );
         return deadline;
     }
  
@@ -62,7 +65,7 @@ const TimerComponent = (props) => {
  
     return (
         <div className="App">
-            <h2>{time}</h2>
+            <button onClick={startTimer}> startTimer</button>
             <button onClick={onClickReset}>Reset</button>
         </div>
     )

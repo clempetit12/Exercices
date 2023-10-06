@@ -4,12 +4,14 @@ import { useState } from 'react'
 import Task from "./Models/Task";
 import DisplayTodoComponent from "./Components/DisplayTodoComponent";
 
+
 function App() {
+
 
   const [tasks, setTasks] = useState([])
   console.table(tasks);
   return (
-    <TodoContext.Provider value={{ tasks, setTasks }}>
+    <TodoContext.Provider value={{ tasks, setTasks}}>
       <div className="container p-2">
       <FormTodoComponent />
       <h1>List of Tasks</h1>

@@ -8,7 +8,7 @@ const FormTodoComponent = () => {
 
 
 
-    const {setTasks} = useContext(TodoContext)
+    const {setTasks, tasks} = useContext(TodoContext)
 
     const taskNameReference = useRef()
     const deadlineReference = useRef()
@@ -19,9 +19,11 @@ const FormTodoComponent = () => {
         const taskName = taskNameReference.current.value
         const deadline = deadlineReference.current.value
         const completeed = completeedReference.current.value
+        console.log("completeed "+completeed);
 
         const newTask = new Task(taskName,deadline,completeed)
         setTasks((prevTasks=> [...prevTasks,newTask]))
+        console.table(tasks);
      
     }
     return (

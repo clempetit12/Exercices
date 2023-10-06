@@ -3,7 +3,7 @@ import Timer from "../Modules/Timer";
 
 const TimerFormComponent = (props) => {
 
-    const {timerValue} = props
+    const {timerValue, setTime} = props
 
   const nameReference = useRef();
   const timeReference = useRef();
@@ -15,15 +15,16 @@ const TimerFormComponent = (props) => {
     timerValue({name,time})
 
   };
+
   return (
     <>
       <h1>Nouveau Timer</h1>
-      <form action="#">
+      <form action="#" >
         <div className="row">
           <input type="text" placeholder="Name" ref={nameReference} />
         </div>
         <div className="row">
-          <input type="text" placeholder="Time" ref={timeReference} />
+          <input type="number" placeholder="Time" ref={timeReference} />
         </div>
         <button onClick={addTableTimers}>Play</button>
       </form>

@@ -21,6 +21,7 @@ function App() {
   <div className="row row-col-2">
     <div className="col-4">
       <TimerFormComponent timerValue={timerValue}/>
+      {time !== null && <Timer time={time} />}
     </div>
     <div className="col-8">
       <TimerComponent  timers = {timers}/>

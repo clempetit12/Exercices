@@ -3,8 +3,6 @@ import { TodoContext } from "../Contexts/TodoContext"
 
 import ButtonStatusComponent from "./ButtonStatutComponent"
 
-const status = ['Not Started', 'In progress', 'Completeed']
-
 const DisplayTodoComponent = (props) => {
     const { idTodo, icon } = props
     const { setTasks } = useContext(TodoContext)
@@ -29,20 +27,20 @@ const DisplayTodoComponent = (props) => {
             <div className="card mb-2 text-right"  >
                 <div className="card-body row">
                     <div>{icon}</div>
-                    <div className="col-3">
+                    <div className="col-3 text-center">
                         <span>{foundTask.name}</span>
                     </div>
-                    <div className="col-3">
+                    <div className="col-3 text-center">
                         <span>{foundTask.deadline}</span>
                     </div>
 
-                    <div className="col-3">
+                    <div className="col-3 text-center">
                         <ButtonStatusComponent taskStatus={taskStatus} setTaskStatus={setTaskStatus} />
                     </div>
-                    <div className="col-3">
+                    <div className="col-3 text-center">
                         {taskStatus === 'Completeed' && (
-                         <  icon onClick={deleteTask} className="center">
-                           <i class="bi bi-x text-danger "></i>
+                         <  icon onClick={deleteTask} >
+                           <i class="bi bi-trash3-fill"></i>
                        </icon>
                         
                         )}

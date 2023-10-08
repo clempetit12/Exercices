@@ -17,18 +17,18 @@ function App() {
       <FormTodoComponent />
       <h1>List of Tasks</h1>
       <hr />
-        <div className="row mb-2">
+        <div className="row mb-2 text-center">
           <div className="col-3">
-          <th>TaskName</th>
+          <span className="text-center"><b>TaskName</b></span>
+          </div>
+          <div className="col-3 text-center">
+          <span className="text-center"><b>Deadline</b></span>
+          </div>
+          <div className="col-3 ">
+          <span className="text-center"><b>TaskStatus</b></span>
           </div>
           <div className="col-3">
-          <th>deadline</th>
-          </div>
-          <div className="col-3">
-          <th>TaskStatus</th>
-          </div>
-          <div className="col-3">
-          <th>Delete?</th>
+          <span className="text-center"><b>Delete ?</b></span>
           </div>
           </div>
       {tasks.map(task => (

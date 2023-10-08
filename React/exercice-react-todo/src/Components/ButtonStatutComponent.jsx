@@ -6,16 +6,12 @@ const status = ['Not Started', 'In progress', 'Completeed']
 
 const ButtonStatusComponent = (props) => {
 
-    const { completeed, deleteTask, maFonction } = props
-    const context = useContext(TodoContext)
-    const { idTodo, tasks } = props
-    const foundTask = context.tasks.find(t => t.id === idTodo)
+    const { completeed, deleteTask} = props
+
 
     const [taskStatus, setTaskStatus] = useState(completeed)
-    const [icon, setIcon] = useState("")
 
-
-
+   
     const changeStatus = () => {
         console.log("change status");
         const currentIndex = status.indexOf(taskStatus);
@@ -25,29 +21,26 @@ const ButtonStatusComponent = (props) => {
         const newStatus = status[newIndex];
         console.log(newStatus);
         setTaskStatus(newStatus);
+        
 
     }
     useEffect(()=> {
         if(taskStatus == "Completeed"){
             console.log("delete");
-
            } else {
             console.log("nooo");
            }
     },[taskStatus])
      
-     
-    
-    
-      
-    
-        
-
 
     return (
         <>
-        <button onClick={changeStatus == "Completeed" ? (<i class="bi bi-x"></i>):(changeStatus)} value={completeed} className='btn btn-outline-dark'>{taskStatus}</button>
-       
+        <button onClick={changeStatus} value={completeed} className='btn btn-outline-dark'>{taskStatus}</button>
+        {(taskStatus)  === 'Completeed' && (
+                        <icon onClick={deleteTask} className="center">
+                            <i class="bi bi-x text-danger "></i>
+                        </icon>
+                    )}
 
         </>
             

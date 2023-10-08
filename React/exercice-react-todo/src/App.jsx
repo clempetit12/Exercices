@@ -3,7 +3,7 @@ import { TodoContext } from "./Contexts/TodoContext";
 import { useState } from 'react'
 import Task from "./Models/Task";
 import DisplayTodoComponent from "./Components/DisplayTodoComponent";
-import CrossComponent from "./Components/CrossComponent";
+
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
       {tasks.map(task => (
         <>
         <DisplayTodoComponent key={task.idTask} idTodo={task.idTask}/>
-         <CrossComponent />
+    
         </>
         
       ))}

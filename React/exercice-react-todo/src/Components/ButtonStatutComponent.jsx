@@ -6,10 +6,10 @@ const status = ['Not Started', 'In progress', 'Completeed']
 
 const ButtonStatusComponent = (props) => {
 
-    const { completeed, deleteTask} = props
+    const { taskStatus, setTaskStatus, completeed, deleteTask} = props
 
 
-    const [taskStatus, setTaskStatus] = useState(completeed)
+
 
    
     const changeStatus = () => {
@@ -35,12 +35,8 @@ const ButtonStatusComponent = (props) => {
 
     return (
         <>
-        <button onClick={changeStatus} value={completeed} className='btn btn-outline-dark'>{taskStatus}</button>
-        {(taskStatus)  === 'Completeed' && (
-                        <icon onClick={deleteTask} className="center">
-                            <i class="bi bi-x text-danger "></i>
-                        </icon>
-                    )}
+        <button onClick={changeStatus} value={taskStatus} className='btn btn-outline-dark'>{taskStatus}</button>
+      
 
         </>
             

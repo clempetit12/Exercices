@@ -2,16 +2,19 @@ import { useContext, useEffect, useState } from "react"
 import { TodoContext } from "../Contexts/TodoContext"
 
 import ButtonStatusComponent from "./ButtonStatutComponent"
-import CrossComponent from "./CrossComponent"
+
 const status = ['Not Started', 'In progress', 'Completeed']
 
 const DisplayTodoComponent = (props) => {
-    const { idTodo, icon, taskStatus } = props
+    const { idTodo, icon } = props
     const { setTasks } = useContext(TodoContext)
     const context = useContext(TodoContext)
     const foundTask = context.tasks.find(t => t.idTask === idTodo)
     console.log(foundTask);
 
+    const completeed = foundTask.completeed
+
+    const [taskStatus, setTaskStatus] = useState(completeed)
 
     const deleteTask = () => {
         console.log("bouton delete");
@@ -34,9 +37,17 @@ const DisplayTodoComponent = (props) => {
                     </div>
 
                     <div className="col-3">
-                        <ButtonStatusComponent deleteTask={deleteTask} completeed={foundTask.completeed} />
+                        <ButtonStatusComponent taskStatus={taskStatus} setTaskStatus={setTaskStatus} />
                     </div>
-                  
+                    <div className="col-3">
+                        {taskStatus === 'Completeed' && (
+                         <  icon onClick={deleteTask} className="center">
+                           <i class="bi bi-x text-danger "></i>
+                       </icon>
+                        
+                        )}
+                    </div>
+
                 </div>
             </div>
         </>

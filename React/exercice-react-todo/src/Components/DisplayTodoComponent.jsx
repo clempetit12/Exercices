@@ -4,11 +4,12 @@ import { TodoContext } from "../Contexts/TodoContext"
 import ButtonStatusComponent from "./ButtonStatutComponent"
 
 const DisplayTodoComponent = (props) => {
-    const { idTodo, icon } = props
-    const { setTasks } = useContext(TodoContext)
-    const context = useContext(TodoContext)
-    const foundTask = context.tasks.find(t => t.idTask === idTodo)
-    console.log(foundTask);
+    const { idTodo } = props
+    const { tasks, setTasks } = useContext(TodoContext)
+
+    const foundTask = tasks.find(t => t.idTask === idTodo)
+    console.log("idTodo "+ idTodo);
+    console.log("foundTask"+foundTask);
 
     const completeed = foundTask.completeed
 
@@ -16,7 +17,7 @@ const DisplayTodoComponent = (props) => {
 
     const deleteTask = () => {
         console.log("bouton delete");
-        const updatedList = context.tasks.filter((task) => task.idTask !== idTodo);
+        const updatedList = tasks.filter((task) => task.idTask !== idTodo);
         setTasks(updatedList)
         console.table(updatedList);
 
@@ -26,7 +27,7 @@ const DisplayTodoComponent = (props) => {
         <>
             <div className="card mb-2 text-right"  >
                 <div className="card-body row">
-                    <div>{icon}</div>
+                   
                     <div className="col-3 text-center">
                         <span>{foundTask.name}</span>
                     </div>
@@ -39,7 +40,7 @@ const DisplayTodoComponent = (props) => {
                     </div>
                     <div className="col-3 text-center">
                         {taskStatus === 'Completeed' && (
-                         <  icon onClick={deleteTask} >
+                         <icon onClick={deleteTask}>
                            <i class="bi bi-trash3-fill"></i>
                        </icon>
                         

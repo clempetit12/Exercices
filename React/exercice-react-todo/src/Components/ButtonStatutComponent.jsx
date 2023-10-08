@@ -20,15 +20,8 @@ const ButtonStatusComponent = (props) => {
         setTaskStatus(newStatus);
        
       } 
-       
-
-    
+      
     useEffect(() => {
-        if (taskStatus == "Completeed") {
-            console.log("delete");
-        } else {
-            console.log("nooo");
-        }
         if (taskStatus === "Completeed") {
             setButtonStatus('success'); 
         } else if (taskStatus === "In progress") {

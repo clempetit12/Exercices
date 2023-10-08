@@ -9,14 +9,6 @@ class Task {
         
     }
 
-    marquerComplet() {
-        this.completee = true;
-      }
-    
-      estCompletee() {
-        return this.completee;
-      }
-
     
 }
 

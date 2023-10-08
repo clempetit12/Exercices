@@ -26,6 +26,7 @@ const FormTodoComponent = () => {
         console.table(tasks);
      
     }
+    
     return (
        
         <form action="#" onSubmit={onSubmitHandler}>

@@ -5,9 +5,7 @@ import { TodoContext } from "../Contexts/TodoContext"
 const status = ['Not Started', 'In progress', 'Completeed']
 
 const FormTodoComponent = () => {
-
-
-
+    
     const {setTasks, tasks} = useContext(TodoContext)
 
     const taskNameReference = useRef()

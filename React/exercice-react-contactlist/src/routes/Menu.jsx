@@ -1,10 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { MyContactContextProvider } from "../Context/ContactContext";
+
 
 const Menu = () => {
   return (
     <>
-      <h1>Mon Menu</h1>
-      <header>
+<MyContactContextProvider>
+
+<header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
           <NavLink
             class="navbar-toggler navbar-brand"
@@ -12,16 +15,10 @@ const Menu = () => {
             data-toggle="collapse"
             to="/"
           >
-            <i class="bi bi-list navbar-brand"></i>
+            <i class="bi bi-list navbar-brand "></i> Accueil 
           </NavLink>
-          <NavLink className="navbar-brand" to="/contact">
+          <NavLink className="navbar-brand" to="/contacts">
             Contact
-          </NavLink>
-          <NavLink className="navbar-brand" to="/projets">
-            Projets
-          </NavLink>
-          <NavLink className="navbar-brand" to="/about">
-            About
           </NavLink>
         </nav>
       </header>
@@ -30,8 +27,13 @@ const Menu = () => {
           <Outlet />
         </div>
       </main>
+
+</MyContactContextProvider>
+
+
+    
     </>
   );
 };
 
-export default Menu;
+export default Menu

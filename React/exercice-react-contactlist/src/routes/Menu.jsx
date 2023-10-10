@@ -27,7 +27,6 @@ const Menu = () => {
           <Outlet />
         </div>
       </main>
-
 </MyContactContextProvider>
 
 

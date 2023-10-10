@@ -4,11 +4,12 @@ import { useRef, useContext } from "react"
 import Contact from "../models/Contact"
 import { useMyContext } from "../Context/ContactContext"
 import { useNavigate, useParams, useSearchParams } from "react-router-dom"
+import DisplayComponent from "./DisplayComponent"
 
-const FormContact = () => {
+const FormContact = (props) => {
 
     const navigate = useNavigate()
-        
+        const {onAddContact} = props
     const {contacts, setContacts} = useMyContext()
  
 
@@ -18,7 +19,7 @@ const FormContact = () => {
     const phoneNumberRef = useRef()
 
     const objParams = useParams()
-    const {param} = objParams
+    const { param } = objParams
 
     const [searchParams] = useSearchParams()
 
@@ -29,12 +30,16 @@ const submitHandler = (e) => {
     const email = emailRef.current.value
     const phoneNumber = phoneNumberRef.current.value
     const newContact = new Contact(firstname,lastname,email,phoneNumber)
-    setContacts((prevContacts) => [...prevContacts,newContact])
+    setContacts((prevContact=>[...prevContact,newContact]))
     console.table(contacts);
     console.log("ajouter");
-    const param = newContact.phonenumber
+    const param = newContact.id
     console.log(param);
     navigate(`/contacts/:${param}`)
+
+   
+    
+    
 }
         
 

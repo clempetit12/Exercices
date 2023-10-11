@@ -20,7 +20,15 @@ const router = createBrowserRouter([
       {
         path: "/formTodo",
         element: <FormTodo />
-      }
+      },
+      {
+        path: "/display/edit/:contactId",
+        element: <DisplayTodo />
+      },
+      {
+        path: "/display/delete/:contactId",
+        element: <DisplayTodo />
+      },
     ]
   }
 ])

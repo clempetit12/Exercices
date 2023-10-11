@@ -1,12 +1,14 @@
-import { useRef } from "react"
+import { useRef,useContext } from "react"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import TodoContext from "../Context/TodoContext";
 
-const FormTodo = (props) => {
+const FormTodo = () => {
     const taskNameReference = useRef()
     const navigate = useNavigate()
 
-    const {todoList, setupTodoList} = props
+    const {todoList,setupTodoList} = useContext(TodoContext)
+   
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
@@ -17,12 +19,17 @@ const FormTodo = (props) => {
           console.log(response.data)
           const newList = response.data
           setupTodoList((prevTodo=> [...prevTodo,newList]))
+          console.table(todoList);
+        
+          console.log(todoList);
+          
         })
         .catch(error => {
           console.error("Erreur :" ,error)
         })
         navigate("/")
-        setupTodoList(prevTodo => [...prevTodo])
+     
+       
  
     }
        
@@ -30,8 +37,7 @@ const FormTodo = (props) => {
     return (
 
         <form action="#" onSubmit={onSubmitHandler}>
-             <h1>To do </h1>
-             <hr />
+          
             <div className="input-group mb-3">
                 <input type="text" className="form-control"placeholder="Name of the Task" ref={taskNameReference} required />
             
@@ -45,3 +51,4 @@ const FormTodo = (props) => {
 }
 
 export default FormTodo
+

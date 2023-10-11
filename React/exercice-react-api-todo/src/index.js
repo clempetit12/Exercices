@@ -5,10 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import router from './app-routing';
 import { RouterProvider } from 'react-router-dom';
+import Top from './Top';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-   <RouterProvider router={router} />
+
+  <Top></Top>
 
  // <React.StrictMode>
 

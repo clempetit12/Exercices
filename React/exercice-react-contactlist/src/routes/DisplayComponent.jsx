@@ -3,14 +3,14 @@ import { useMyContext } from "../Context/ContactContext"
 
 const DisplayComponent = (props) => {
 
-    const { idContact, firstnameRef } = props
+    const { idContact } = props
     const { contacts, setContacts } = useMyContext()
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
     const mode = searchParams.get('mode')
 
     const objParams = useParams()
-    const { monparam } = objParams
+    const { param } = objParams
 
     const foundContact = contacts.find(c => c.id === idContact)
     console.log(idContact);
@@ -19,8 +19,10 @@ const DisplayComponent = (props) => {
     console.log("foundcontact" + foundContact.firstname);
 
     const edit = () => {
-        const param = foundContact.id
+        const param = idContact
         navigate(`/formContact/${param}?mode=edit`)
+
+
     }
 
     const deleteContact = () => {

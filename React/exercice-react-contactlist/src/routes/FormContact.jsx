@@ -9,7 +9,7 @@ import DisplayComponent from "./DisplayComponent"
 const FormContact = (props) => {
 
     const navigate = useNavigate()
-        const {onAddContact} = props
+        const {contactId} = props
     const {contacts, setContacts} = useMyContext()
  
 
@@ -47,7 +47,7 @@ const submitHandler = (e) => {
 <>
 <h1>Ajout d'un contact</h1>
 <form action="#" onSubmit={submitHandler}>
-<input type="text" placeholder="Firstname" ref={firstnameRef} />
+<input type="text" placeholder="Firstname" ref={firstnameRef} defaultValue={contacts?.firstname}/>
 <input type="text" placeholder="Lastname" ref={lastnameRef} />
 <input type="text" placeholder="Email" ref={emailRef} />
 <input type="text" placeholder="PhoneNumber" ref={phoneNumberRef} />

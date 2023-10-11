@@ -1,8 +1,10 @@
 import { useRef } from "react"
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const FormTodo = (props) => {
     const taskNameReference = useRef()
+    const navigate = useNavigate()
 
     const {todoList, setupTodoList} = props
 
@@ -19,6 +21,8 @@ const FormTodo = (props) => {
         .catch(error => {
           console.error("Erreur :" ,error)
         })
+        navigate("/")
+        setupTodoList(prevTodo => [...prevTodo])
  
     }
        

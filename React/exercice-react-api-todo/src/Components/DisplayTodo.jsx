@@ -8,16 +8,16 @@ const DisplayTodo = ({ todoList, setupTodoList }) => {
 
 
     const edit = (id) => {
-    
-        axios.put(`http://localhost:5000/todos/${id}`, { titre: "hello"})
+
+        axios.put(`http://localhost:5000/todos/${id}`, { titre: "hello" })
             .then((response) => {
                 console.log(response.data)
                 const updatedContact = response.data
                 setupTodoList((prev) =>
-        prev.map((todo) =>
-          todo.id === id ? updatedContact : todo
-        ))
-            
+                    prev.map((todo) =>
+                        todo.id === id ? updatedContact : todo
+                    ))
+
             })
             .catch(error => {
                 console.error("Erreur :", error)
@@ -29,33 +29,37 @@ const DisplayTodo = ({ todoList, setupTodoList }) => {
         axios.delete(`http://localhost:5000/todos/${id}`)
             .then(() => {
                 console.log("personne avec id  ")
-                setupTodoList(prevTodo => prevTodo.filter(t=> t.id !== id))
+                setupTodoList(prevTodo => prevTodo.filter(t => t.id !== id))
             })
             .catch(error => {
                 console.error("Erreur :", error)
             })
-       
+
 
     }
 
 
     return (
-        <>
-            <div className="card mb-2 text-right"  >
-                <div className="card-body row">
-                    <div className="col-3 text-center">
-                        {todoList.map((todo, index) => (
-                            <li key={index}>{todo.titre} <button className="btn  btn-outline-warning" onClick={() => deleteTodo(todo.id)}>Delete</button>  <button className="btn btn-outline-success" onClick={() => edit(todo.id)} >Edit</button> </li>)
 
-                        )}
-                    </div>
+        <div className="card mb-2 text-right"  >
+            <div className="card-body row"></div>
 
-                </div>
+            {todoList.map((todo, index) => (
+                <div className="container mb-2">
+                    <div className="row">
+                    <div className='col-8 ' >{todo.titre} </div> <div class="col-2 ">
+                        <button className="btn  btn-outline-warning byn-sm" onClick={() => deleteTodo(todo.id)}> <i class="bi bi-trash3 "></i>Delete</button></div> 
+                        <div className="col-2">
+                        <button className="btn btn-outline-success" onClick={() => edit(todo.id)} > <i class="bi bi-pencil-fill"></i>Edit</button></div> </div>
+                        </div>
+                       
+                           ))
+                    
+                          }
+               
+            </div >
 
-            </div>
-
-        </>
-
+        
     )
 }
 

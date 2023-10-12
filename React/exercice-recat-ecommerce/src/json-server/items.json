@@ -1,0 +1,16 @@
+{
+    "items": [
+        {
+            "title": "Chaise",
+            "details": "Chaise de style bohème",
+            "price": 30,
+            "id": 1
+        },
+        {
+            "title": "Canapé",
+            "details": "Canapé de style bohème",
+            "price": 200,
+            "id": 2
+        }
+    ]
+}

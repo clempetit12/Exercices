@@ -17,7 +17,7 @@ const DisplayTodo = (props) => {
     const [isInputVisible, setInputVisible] = useState(false);
     const updatedDataRef = useRef()
 
-    const edit = (idTodo) => {
+    const edit = () => {
         setInputVisible(true)
     }
 
@@ -27,6 +27,7 @@ const DisplayTodo = (props) => {
             .then(() => {
                 console.log("personne avec id  ")
                 setupTodoList(prevTodo => prevTodo.filter(t => t.id !== idTodo))
+                navigate("/")
             })
             .catch(error => {
                 console.error("Erreur :", error)
@@ -42,6 +43,7 @@ const DisplayTodo = (props) => {
                 console.log(response.data)
                 setupTodoList((prev) => prev.map((todo) => todo.id === idTodo ?
                     { titre: updatedData } : todo))
+                    navigate("/")
 
             })
 

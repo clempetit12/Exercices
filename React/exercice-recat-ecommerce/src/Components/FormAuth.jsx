@@ -1,10 +1,19 @@
+import { useRef } from "react"
+import { Link } from "react-router-dom"
+
+
 const FormAuth = () => {
-    return(
-<>
-<h1>Formulaire d'authentification</h1>
-<input type="text" placeholder="user" />
-<input type="password" placeholder="password"/>
-</>
+
+const userRef = useRef()
+const passwordRef = useRef()
+    return (
+      <>
+      <h1>Page authentification </h1>
+
+      <input type="text" placeholder="user" ref={userRef} />
+      <input type="password" placeholder="password"  ref={passwordRef}/>
+      <Link to="/addItems">Confirmer</Link>
+      </>  
     )
 }
 

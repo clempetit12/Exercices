@@ -7,6 +7,7 @@ import FormAuth from "./Components/FormAuth";
 import AddItemsSecure from "./Components/AddItemsSecure";
 import ErrorPage from "./Components/ErroroPage";
 import Menu from "./Components/Menu";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
           {path : "/details/:id", element : <ItemDetails />},
           { path : "/basket", element : <Basket />},
           { path : "/formauth", element : <FormAuth />},
-          { path : "/addItems", element : <FormAuth><AddItemsSecure/></FormAuth>}
+          { path : "/addItems", element : <ProtectedRoute><AddItemsSecure/></ProtectedRoute>}
         
         ],
       },

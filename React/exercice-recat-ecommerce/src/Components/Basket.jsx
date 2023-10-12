@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import ItemContext from "../Context/ItemContext"
-import axios from "axios"
 import { Link, useParams } from "react-router-dom"
 
 
@@ -17,12 +16,7 @@ console.log(valeurs);
 const somme = valeurs.reduce((total, valeur)=> total + valeur,0)
 console.log(somme);
 
-const calculSomme = () => {
-    
-    console.log(valeurs);
-    const somme = valeurs.reduce((total, valeur)=> total + valeur,0)
-  
-}
+
 
     return(
 <>

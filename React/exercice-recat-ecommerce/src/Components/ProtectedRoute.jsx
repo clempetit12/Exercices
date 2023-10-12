@@ -1,17 +1,16 @@
 import { Navigate } from "react-router-dom"
 
 const ProtectedRoute = (props) => {
-
-    const {userRef, passwordRef} = props
-const value1=userRef.current.value
-const value2=passwordRef.current.value
-
-    if(value1==="user" & value2==="hello"){
+    const userl = localStorage.getItem('user')
+    const passwordl = localStorage.getItem('password')
+console.log(userl);
+console.log(passwordl);
+    if(userl==="user" & passwordl==="hello"){
         return (<>
             {props.children}
         </>)
     }else {
-        return <Navigate to={"/addItems"}></Navigate>
+        return <Navigate to={"/"}></Navigate>
     }
 }
 

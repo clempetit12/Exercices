@@ -23,10 +23,13 @@ console.log(somme);
 <h1>Panier</h1>
 <hr />
 <ul>
- {basket.map((item,index)=> <div><li key={index}> {item.title} {item.price}€</li></div>)} 
+ {basket.map((item,index)=> <div><li key={index}> <b>Article :</b> {item.title} -- <b>Prix : </b>{item.price}€</li></div>)} 
 </ul>
-<p>Total : {somme}</p>
-<Link to={"/"}>Ajouter des articles au panier</Link>
+<p className="display-6 text-end fw-bold" >Total : {somme} €</p>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+<Link to={"/"} className="btn btn-success  mb-3"type="button"><i class="bi bi-patch-plus"></i> Ajouter des articles au panier</Link>
+</div>
+
 
 </>
     )

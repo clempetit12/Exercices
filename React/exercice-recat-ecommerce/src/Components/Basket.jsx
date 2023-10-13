@@ -27,7 +27,7 @@ useEffect(() => {
 
   const addItemToBasket = (item) => {
     // Add an item to the basket
-    setBasket([...basket, item]);
+    setBasket(previtem => [...previtem, item]);
 
   };
 

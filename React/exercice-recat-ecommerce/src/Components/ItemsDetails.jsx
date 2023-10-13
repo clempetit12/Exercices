@@ -10,15 +10,14 @@ const ItemDetails = () => {
     //const navigate = useNavigate()
 
     const navigate = useNavigate()
-
+   
 
     useEffect(() => {
         axios.get(`http://localhost:4444/items/${id}`)
             .then(response => {
                 setItemList(response.data)
             })
-            const savedBasket = localStorage.getItem("basket");
-          
+        
         
     }, [id])
 
@@ -32,8 +31,8 @@ const ItemDetails = () => {
         console.log(`article acheté ${newItem.title}${newItem.price}`);
         console.log(newItem);
         setBasket(prev => [...prev, newItem])
-        console.log(basket);
-        localStorage.setItem("basket", JSON.stringify(newItem))
+        console.log("basket"+basket);
+        
         navigate("/basket")
     }
   

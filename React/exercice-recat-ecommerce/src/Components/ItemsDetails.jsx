@@ -12,12 +12,14 @@ const ItemDetails = () => {
     const navigate = useNavigate()
 
 
-
     useEffect(() => {
         axios.get(`http://localhost:4444/items/${id}`)
             .then(response => {
                 setItemList(response.data)
             })
+            const savedBasket = localStorage.getItem("basket");
+          
+        
     }, [id])
 
     if (!itemList) {
@@ -31,10 +33,10 @@ const ItemDetails = () => {
         console.log(newItem);
         setBasket(prev => [...prev, newItem])
         console.log(basket);
-
         localStorage.setItem("basket", JSON.stringify(newItem))
         navigate("/basket")
     }
+  
     return (
         <>
             <h1 className="mt-2 display-5">

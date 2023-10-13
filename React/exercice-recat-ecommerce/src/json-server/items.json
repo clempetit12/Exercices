@@ -27,6 +27,13 @@
       "price": 50,
       "url": "https://plus.unsplash.com/premium_photo-1669357657851-f15e1417ea08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGxhbnRlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
       "id": 4
+    },
+    {
+      "title": "Tableau",
+      "details": "Tableau d'art moderne",
+      "price": 300,
+      "url": "https://images.unsplash.com/photo-1558882224-dda166733046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVjb3JhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+      "id": 5
     }
   ]
 }

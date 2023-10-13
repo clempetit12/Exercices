@@ -7,6 +7,7 @@ const FormAuth = () => {
 const userRef = useRef()
 const passwordRef = useRef()
 const navigate = useNavigate()
+
 const setStorage = () => {
   const user = userRef.current.value
   const password = passwordRef.current.value

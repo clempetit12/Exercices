@@ -4,8 +4,6 @@ import { Link, useParams } from "react-router-dom"
 
 
 const Basket = () => {
-
-    const {id} = useParams
     
  
     const {  basket, setBasket } = useContext(ItemContext)
@@ -13,17 +11,19 @@ const Basket = () => {
 console.table(basket);
 
 useEffect(() => {
+  if (basket.length == 0 || basket == null ){
+    const storedBasket = JSON.parse(localStorage.getItem("basket", JSON.stringify(basket)))
+    setBasket(storedBasket)
+  } else {
     localStorage.setItem("basket", JSON.stringify(basket));
     const storedItems = JSON.parse(localStorage.getItem('basket'));
     if (storedItems) {
         setBasket(storedItems);
       }
+  }
+    
 
 },[])
-
-
-
-
 
   const addItemToBasket = (item) => {
     // Add an item to the basket
@@ -32,20 +32,16 @@ useEffect(() => {
   };
 
 
-
 const valeurs = basket.map(item=>item.price)
 console.log(valeurs);
 const somme = valeurs.reduce((total, valeur)=> total + valeur,0)
 console.log(somme);
 
-
-
 const deleteItem = (itemToDelete) => {
-const itemDelet = {...basket}
-console.log("itemDelete"+itemDelet);
-setBasket(prevItem => prevItem.filter(item => item !== itemToDelete))
-console.log("itemdelete "+itemDelet);
+  const updatedBasket =  basket.filter(item => item !== itemToDelete)
+setBasket(updatedBasket)
 console.log(basket);
+localStorage.setItem("basket",JSON.stringify(updatedBasket))
 }
 
     return ( 

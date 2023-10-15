@@ -7,16 +7,19 @@ const Basket = () => {
     
  
     const {  basket, setBasket } = useContext(ItemContext)
-
+    const [newBasket,setNewBasket] = useState([])
 console.table(basket);
 
 useEffect(() => {
-  if (basket.length == 0 || basket == null ){
+  if (basket.length == 0 ){
     const storedBasket = JSON.parse(localStorage.getItem("basket", JSON.stringify(basket)))
     setBasket(storedBasket)
+  } else if  (basket == null){
+    console.log("basket null");
+    setBasket(newBasket)
   } else {
     localStorage.setItem("basket", JSON.stringify(basket));
-    const storedItems = JSON.parse(localStorage.getItem('basket'));
+    const storedItems = JSON.parse(localStorage.getItem('basket'))
     if (storedItems) {
         setBasket(storedItems);
       }

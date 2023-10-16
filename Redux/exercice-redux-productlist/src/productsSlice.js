@@ -4,16 +4,21 @@ const productsSlice = createSlice(
    {
     name:"products",
     initialState: {
-        products :[{id: 1,name: "pomme", price:1.5}],
+        products :[],
         counterProducts: 1,
-        isInputVisible : false
+        isInputVisible : false,
+        data:null,
+        
 
     },
     reducers: {
         addProduct: (state, action) => {
 const newProduct = {id: Date.now(),name: action.payload.name, price: action.payload.price}
-state.products.push(newProduct)
 state.counterProducts++
+state.products.push(newProduct)
+localStorage.setItem("products", JSON.stringify(newProduct))
+
+
         },
         deleteProduct: (state, action) => {
 state.products = state.products.filter(p => p.id !== action.payload)
@@ -30,10 +35,11 @@ console.table(state.products);
 
 
         },
+      
     }
    } 
 )
 
-export const {addProduct, deleteProduct, updateProduct} = productsSlice.actions
+export const {addProduct, deleteProduct, updateProduct, loadFromLocalStorage} = productsSlice.actions
 export default productsSlice.reducer
     

@@ -35,6 +35,7 @@ const handleData = () => {
                                     type="text"
                                     placeholder="Name"
                                     ref={updatedDataRefName}
+                                    defaultValue={product.name}
 
 
                                 />
@@ -42,6 +43,7 @@ const handleData = () => {
                                     type="text"
                                     placeholder="Price"
                                     ref={updatedDataRefPrice}
+                                    defaultValue={product.price}
 
 
                                 />

@@ -7,7 +7,7 @@ const ProductList = () => {
 
     return(
         <>
-        <table className="table text-center">
+        <table className="table text-center table-hover table-dark">
             <thead>
                 <th>Nom</th>
                 <th>Prix</th>

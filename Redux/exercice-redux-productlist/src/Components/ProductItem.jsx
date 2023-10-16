@@ -18,6 +18,7 @@ const handleData = () => {
     const updatedData = updatedDataRefName.current.value
     console.log(updatedData);
     dispatch(updateProduct({id: product.id, name : updatedData, price : updatedDataRefPrice.current.value}))
+    setInputVisible(false)
 }
         
         
@@ -26,7 +27,7 @@ const handleData = () => {
     return(
         <>
         <td>{product.name}</td>
-        <td>{product.price}</td>
+        <td>{product.price}€</td>
         <td><button className="btn btn-success m-2" onClick={() => setInputVisible(true)}>Modifier le produit</button> 
         {inputVisible && (
                             <>

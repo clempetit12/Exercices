@@ -22,7 +22,7 @@ state.counterProducts--
         },
         updateProduct: (state, action) => {
             console.log("update");
-const newproductlist = state.products.map((p => p.id === action.payload.id ? {id: p.id,name: action.payload.name, price: action.payload.price} : p))
+const newproductlist = state.products.map((p => p.id === action.payload.id ? {id: p.id,name: action.payload.name || p.name, price: action.payload.price || p.price} : p))
 console.log(newproductlist);
 state.products = newproductlist
 console.table(state.products);

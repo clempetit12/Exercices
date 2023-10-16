@@ -1,0 +1,9 @@
+.footer-navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* Choisir la couleur de fond souhaitée */
+    color: white; /* Choisir la couleur du texte souhaitée */
+    padding: 10px; /* Espace entre le contenu et le bas de la page */
+  }
+  

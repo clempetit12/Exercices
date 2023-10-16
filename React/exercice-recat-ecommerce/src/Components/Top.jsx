@@ -7,12 +7,13 @@ function Top() {
 
     const [itemList, setItemList] = useState([])
     const [basket, setBasket] = useState([])
+    const   [access, setAccess] = useState([])
  
     
 
 
   return (
-    <ItemContext.Provider value={{itemList, setItemList,basket,setBasket}}>
+    <ItemContext.Provider value={{itemList, setItemList,basket,setBasket, access,setAccess}}>
       <RouterProvider router={router} />
       </ItemContext.Provider>
   );

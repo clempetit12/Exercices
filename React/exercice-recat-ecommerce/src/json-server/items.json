@@ -1,16 +1,46 @@
 {
-    "items": [
-        {
-            "title": "Chaise",
-            "details": "Chaise de style bohème",
-            "price": 30,
-            "id": 1
-        },
-        {
-            "title": "Canapé",
-            "details": "Canapé de style bohème",
-            "price": 200,
-            "id": 2
-        }
-    ]
+  "items": [
+    {
+      "title": "Chaise",
+      "details": "Chaise de style bohème",
+      "url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNoYWlzZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+      "price": 30,
+      "id": 1
+    },
+    {
+      "title": "Canapé",
+      "details": "Canapé de style bohème",
+      "url": "https://plus.unsplash.com/premium_photo-1661765778256-169bf5e561a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FuYXBlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+      "price": 200,
+      "id": 2
+    },
+    {
+      "title": "Lampe",
+      "details": "lampe disco",
+      "url": "https://images.unsplash.com/photo-1475783006851-1d68dd683eff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbXBlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+      "price": 130,
+      "id": 3
+    },
+    {
+      "title": "Plante décorative",
+      "details": "Plante pour égayer l'intérieur",
+      "price": 50,
+      "url": "https://plus.unsplash.com/premium_photo-1669357657851-f15e1417ea08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGxhbnRlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+      "id": 4
+    },
+    {
+      "title": "Tableau",
+      "details": "Tableau d'art moderne",
+      "price": 300,
+      "url": "https://images.unsplash.com/photo-1558882224-dda166733046?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVjb3JhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+      "id": 5
+    },
+    {
+      "title": "Tableau",
+      "details": "Tableau moderne",
+      "price": 500,
+      "url": "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZGVjb3JhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+      "id": 6
+    }
+  ]
 }

@@ -11,17 +11,17 @@ const RecipeItem = (props) => {
 
     const deleteHandle = () => {
        /*  axios.delete(`${BASE_DB_URL}/recipelist.json?auth=${user.idToken}`) */
-       axios.delete(`${BASE_DB_URL}/`)
+       /* axios.delete(`${BASE_DB_URL}/recipelist/${}`)
        .then(response => {
         console.log(response.data)
-        console.log("useeffect");
+        console.log("delete");
   
       })
       .catch(error => {
   
         console.error("Erreur :", error)
       })
-     
+      */
     }
 
 

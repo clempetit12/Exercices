@@ -15,11 +15,7 @@ const ProductList = () => {
             const storedProducts = JSON.parse(localStorage.getItem("products", JSON.stringify(productList)))
             const newproduct = {id: storedProducts.id,name: storedProducts.name, price: storedProducts.price}
             console.log(newproduct);
-            
-        
-
-
-    }, [])
+    }, [productList])
     
     return(
         <>

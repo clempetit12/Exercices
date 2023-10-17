@@ -7,17 +7,15 @@ const Basket = () => {
     
  
     const {  basket, setBasket } = useContext(ItemContext)
-    const [newBasket,setNewBasket] = useState([])
+ 
 console.table(basket);
 
 useEffect(() => {
-  if (basket.length == 0 ){
+  if (basket.length == 0 && basket == null){
     const storedBasket = JSON.parse(localStorage.getItem("basket", JSON.stringify(basket)))
     setBasket(storedBasket)
-  } else if  (basket == null){
-    console.log("basket null");
-    setBasket(newBasket)
-  } else {
+  }
+   else {
     localStorage.setItem("basket", JSON.stringify(basket));
     const storedItems = JSON.parse(localStorage.getItem('basket'))
     if (storedItems) {
@@ -51,7 +49,7 @@ localStorage.setItem("basket",JSON.stringify(updatedBasket))
 <>
 <h1>Panier</h1>
 <hr />
-{basket.map((item, index) => (<div>   <li key={index}>
+{(basket.length === 0 || basket === null)? <p>Il n'y a pas d'articles dans votre panier !</p> :  basket.map((item, index) => (<div>   <li key={index}>
           {item.title} - {item.price}€
         </li> <button className="btn btn-outline-danger" onClick={()=>deleteItem(item)}>Delete</button></div>
      
@@ -62,7 +60,6 @@ localStorage.setItem("basket",JSON.stringify(updatedBasket))
 </div> 
 
 </>)}
-
 
 
 export default Basket

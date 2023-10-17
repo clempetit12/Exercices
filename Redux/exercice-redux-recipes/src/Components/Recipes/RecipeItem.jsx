@@ -5,26 +5,34 @@ import { BASE_DB_URL } from "../../firebaseConfig"
 
 const RecipeItem = (props) => {
 
+    const idRecipe = props.idRecipe
     const recipe = props.recipe
     const user = useSelector(state => state.auth.user)
     const dispatch = useDispatch()
 
-    const deleteHandle = () => {
-       /*  axios.delete(`${BASE_DB_URL}/recipelist.json?auth=${user.idToken}`) */
-       /* axios.delete(`${BASE_DB_URL}/recipelist/${}`)
-       .then(response => {
-        console.log(response.data)
-        console.log("delete");
-  
-      })
-      .catch(error => {
-  
-        console.error("Erreur :", error)
-      })
-      */
-    }
-
-
+    const deleteHandle = (idRecipe) => {
+        axios.get(`${BASE_DB_URL}/recipelist.json?auth=${user.idToken}`)
+          .then(response => {
+            const data = response.data;
+            for (let key in data) {
+              if (data[key].id === idRecipe) {
+                axios.delete(`${BASE_DB_URL}/recipelist/${key}.json?auth=${user.idToken}`)
+                  .then(response => {
+                    console.log('Objet supprimé avec succès.');
+                    dispatch(deleteRecipe(idRecipe));
+                  })
+                  .catch(error => {
+                    console.error('Erreur lors de la suppression de l\'objet :', error);
+                  });
+              }
+            }
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération des données :', error);
+          });
+      };
+      
+      
 
     return (
         <>
@@ -57,7 +65,7 @@ const RecipeItem = (props) => {
                             <div>
                                 <hr />
                                 <button className="btn btn-warning">Edit</button>
-                                <button onClick={() => deleteHandle()} className="btn btn-danger" >Delete</button>
+                                <button onClick={() => deleteHandle(recipe.id)} className="btn btn-danger" >Delete</button>
                             </div>
                         </div>
                     </div>
@@ -69,5 +77,6 @@ const RecipeItem = (props) => {
         </>
     )
 }
+
 
 export default RecipeItem

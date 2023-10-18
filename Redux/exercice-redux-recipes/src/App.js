@@ -1,11 +1,14 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuthMode } from "./Components/auth/authSlice";
 
 
 
 function App() {
 
   const authMode = useSelector(state => state.auth.authMode)
+  const user = useSelector(state => state.auth.user)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   return (
     <>
@@ -16,12 +19,14 @@ function App() {
          <i class="bi bi-house-heart display-6"></i>   Home  
 
         </NavLink >
-       
-        <NavLink className="navbar-brand btn-success" to="/signform" type="button" >
-          {authMode}
+
+       <NavLink className=" ms-auto btn btn-success p-2" to="/signform" type="button" >
+          { authMode}
           
         </NavLink>
 
+
+       
       </nav>
     </header>
     <main>
@@ -36,3 +41,5 @@ function App() {
 }
 
 export default App;
+
+

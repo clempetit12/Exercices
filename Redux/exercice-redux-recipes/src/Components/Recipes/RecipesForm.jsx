@@ -59,7 +59,7 @@ const RecipeForm = () => {
 
     return(
         <>
-        <h1>Ajouter une recette
+        <h1 >Ajouter une recette
         </h1>
         <hr />
         <form action="" onSubmit={submitFormHandler}>

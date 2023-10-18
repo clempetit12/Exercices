@@ -44,7 +44,7 @@ useEffect(() => {
 
     return(
         <>
-        <h1>Recipe List</h1>
+        <h1 className="display-5">Recipe List</h1>
         {user ? (<div><NavLink to={"/addRecipe"} type="button" className="btn btn-success">Add</NavLink> <button onClick={() => dispatch(removeUser())}>Déconnexion</button></div>) : ""}
         <hr />
            {Array.isArray(recipes) ? recipes.map((recipe,key) =>(<RecipeItem recipe={recipe} key={key} idRecipe={recipe.id}/>)) : null}

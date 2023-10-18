@@ -43,22 +43,29 @@ try {
 
     return(
         <>
-        <h1>Formulaire de connexion</h1>
-        <form action="" onSubmit={submitHandler}>
-            <div>
-                <label htmlFor="email" placeholder="email">Email : </label>
-                <input type="text" ref={emailRef} />
+        <h1 className="display-5">Formulaire de connexion</h1>
+        <hr />
+        <form action="" onSubmit={submitHandler} className="text-center align-items mb-3">
+            <div className=" input-group mb-3">
+                <div className="input-group-prepend">
+                <label className="input-group-text" htmlFor="email" placeholder="email">Email : </label>
+                </div>
+             
+                <input type="text" className="form-control" ref={emailRef} />
             </div>
-            <div>
+            <div className=" input-group mb-3">
                 <label htmlFor="password" placeholder="password">Password : </label>
                 <input type="password" ref={passwordRef} />
             </div>
-            <button>{authMode}</button>
+            <button className="btn btn-secondary">{authMode}</button>
            
         </form>
-        <button
+        <div className="text-center">
+        <button className=" btn btn-primary"
                 onClick={() => dispatch(setAuthMode(authMode === "Se connecter" ? "S'inscrire" : "Se connecter"))}>{authMode === "Se connecter" ? "S'inscrire" : "Se connecter"}</button>
             
+        </div>
+     
         </>
     )
 }

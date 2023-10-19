@@ -46,8 +46,8 @@ const AddAlbumForm = () => {
           
 
         
-            dispatch(editAlbums({id: selectedAlbum.id,title: newAlbum.title, releaseDate:newAlbum.releaseDate, artist: newAlbum.artist}))
-            console.log(dispatch(editAlbums(selectedAlbum,newAlbum)));
+            dispatch(editAlbums({id: selectedAlbum.id,...newAlbum}))
+        
             dispatch(setFormMode(""))
         }
 

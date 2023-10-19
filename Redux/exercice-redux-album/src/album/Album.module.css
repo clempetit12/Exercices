@@ -1,7 +1,13 @@
 .card {
-    width : 18rem;
     display: flex;
-    flex-direction: column-reverse;
+    
 
     
+   
+
+    
+}
+
+.image {
+    width: 400px
 }

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-
+import styles from "./album/Album.module.css"
 import Modal from './shared/Modal'
 import NavBar from './shared/NavBar'
 import { setFormMode} from './album/albumSlice'
@@ -40,11 +40,15 @@ function App() {
               {user && <button className='btn btn-success' onClick={() => dispatch(setFormMode("add"))}>Add</button>}
             </div>
             <hr />
+            <div className={styles.card}>
             {
               albums.length === 0 ? (
                 <p>Il n'y a pas d'albums</p>
               ) : albums.map(album => <AlbumDisplay key={album.id} album={album} />)
             }
+
+            </div>
+           
           </div>
         </div>
       </main>

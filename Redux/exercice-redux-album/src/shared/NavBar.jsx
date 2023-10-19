@@ -8,28 +8,40 @@ const NavBar = () => {
     const authMode = useSelector(state => state.auth.authMode)
     const dispatch = useDispatch()
 
-    return ( 
+    return (
         <>
-        {
-            authMode && (
-                <Modal onClose={() => dispatch(setAuthMode(""))}>
-                    <SignForm/>
-                </Modal>
-            )
-        }
+            {
+                authMode && (
+                    <Modal onClose={() => dispatch(setAuthMode(""))}>
+                        <SignForm />
+                    </Modal>
+                )
+            }
             <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                 <div className="container-fluid">
                     <span className="navbar-brand"><i className="bi bi-globe"></i>eAlbum</span>
-                    <button 
-                        onClick={() => !user ? dispatch(setAuthMode("Se connecter")) : dispatch(removeUser())}
-                        className="ms-auto btn btn-info"
-                    >
-                        {user ? "Déconnexion" : "Se connecter"}
-                    </button>
+
+
+
                 </div>
+                <form class="form-inline m-4">
+                    <div className="input-group mb-3">
+
+                        <input class="form-control mr-2 " type="search" placeholder="Search" aria-label="Search" button />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+                    </div>
+
+                </form>
+                <button
+                    onClick={() => !user ? dispatch(setAuthMode("Se connecter")) : dispatch(removeUser())}
+                    className=" btn btn-info"
+                >
+                    {user ? "Déconnexion" : "Se connecter"}
+                </button>
             </nav>
         </>
-     );
+    );
 }
- 
+
 export default NavBar;

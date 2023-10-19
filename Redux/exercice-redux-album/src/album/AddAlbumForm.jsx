@@ -43,9 +43,6 @@ const AddAlbumForm = () => {
         } else if (formMode === "edit") {
             console.log("edit")
             console.log("selectedalbum" +selectedAlbum);
-          
-
-        
             dispatch(editAlbums({id: selectedAlbum.id,...newAlbum}))
         
             dispatch(setFormMode(""))

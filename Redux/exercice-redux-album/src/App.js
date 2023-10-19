@@ -9,8 +9,6 @@ import { useEffect } from 'react'
 
 import { fetchAlbums } from './album/albumSlice'
 import AddAlbumForm from './album/AddAlbumForm'
-import EditAlbumForm from './album/EditAlbumForm'
-import DeleteAlbumForm from './album/DeleteAlbumForm'
 import AlbumDisplay from './album/AlbumDisplay'
 
 function App() {
@@ -21,14 +19,16 @@ function App() {
 
 
   useEffect(() => {
-    dispatch(fetchAlbums)
+    dispatch(fetchAlbums())
+    console.log(albums);
   }, [])
 
   return (
     <>
-      {formMode === "add" && <Modal onClose={() => dispatch(setFormMode(""))}><AddAlbumForm/></Modal>}
-      {formMode === "edit" && <Modal onClose={() => dispatch(setFormMode(""))}><EditAlbumForm/></Modal>}
-      {formMode === "delete" && <Modal onClose={() => dispatch(setFormMode(""))}><DeleteAlbumForm/></Modal>}
+      {formMode === "add"  && <Modal onClose={() => dispatch(setFormMode(""))}><AddAlbumForm/></Modal>}
+      {formMode === "delete" && <Modal onClose={() => dispatch(setFormMode(""))}><AddAlbumForm/></Modal>}
+      {formMode === "edit" && <Modal onClose={() => dispatch(setFormMode(""))}><AddAlbumForm/></Modal>}
+
       <header>
         <NavBar />
       </header>
@@ -43,7 +43,7 @@ function App() {
             {
               albums.length === 0 ? (
                 <p>Il n'y a pas d'albums</p>
-              ) : albums.map(recipe => <AlbumDisplay key={recipe.id} recipe={recipe} />)
+              ) : albums.map(album => <AlbumDisplay key={album.id} album={album} />)
             }
           </div>
         </div>

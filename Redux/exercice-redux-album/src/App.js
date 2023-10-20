@@ -19,6 +19,7 @@ function App() {
   const filteredAlbum = useSelector(state => state.albums.filteredAlbum)
 
 
+
   useEffect(() => {
     dispatch(fetchAlbums())
     console.log(albums);
@@ -42,12 +43,12 @@ function App() {
             </div>
             <hr />
             <div className={styles.card}>
-            {filteredAlbum !== null ? <AlbumDisplay key={filteredAlbum.id} album={filteredAlbum[0]} /> :
-              albums.length === 0 ? (
+              { albums.length === 0 ? (
                 <p>Il n'y a pas d'albums</p>
-              ) : albums.map(album => <AlbumDisplay key={album.id} album={album} />)
-            }
-
+              ) : filteredAlbum ? filteredAlbum.map(album => <AlbumDisplay key={album.id} album={album} />) : albums.map(album => <AlbumDisplay key={album.id} album={album} /> )  }
+           
+             
+            
             </div>
            
           </div>

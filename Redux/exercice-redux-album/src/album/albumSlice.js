@@ -74,9 +74,12 @@ const albumSlice = createSlice({
     name: "albums",
     initialState: {
         albums: [],
+        albumsFiltered: [],
         formMode: "",
         selectedAlbum: null,
-        filteredAlbum: null
+        filteredAlbum: null,
+       
+
     },
     reducers: {
         setFormMode: (state, action) => {
@@ -90,7 +93,22 @@ const albumSlice = createSlice({
             console.log(filter);
 
             state.filteredAlbum = state.albums.filter(album => album.title.toLowerCase().startsWith(filter));
+            state.albumsFiltered.push(state.filteredAlbum)
             console.log(state.filteredAlbum);
+        },
+        setSortAlbums: (state,action) => {
+            const tab = action.payload
+            console.log(tab);
+            const sortedAlbumsScore = [...tab].sort((a, b) => b.score - a.score)
+            console.log("sorted"+sortedAlbumsScore);
+            state.albums = sortedAlbumsScore
+        },
+        setAlbumsReleaseDate: (state,action) => {
+            const tab = action.payload
+            console.log(tab);
+            const sortedAlbumsRealeaseDate = [...tab].sort((a, b) => b.releaseDate - a.releaseDate)
+            console.log("sorted"+sortedAlbumsRealeaseDate);
+            state.albums = sortedAlbumsRealeaseDate
         }
     },
     extraReducers: (builder) => {
@@ -123,6 +141,6 @@ const albumSlice = createSlice({
 
 )
 
-export const { setFormMode, setSelectedAlbum, setFilteredAlbum } = albumSlice.actions
+export const { setFormMode, setSelectedAlbum, setFilteredAlbum,setSortAlbums, setAlbumsReleaseDate } = albumSlice.actions
 export default albumSlice.reducer
 

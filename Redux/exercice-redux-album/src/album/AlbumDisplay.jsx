@@ -11,6 +11,7 @@ const AlbumDisplay = (props) => {
     const dispatch = useDispatch()
     const selectedAlbum = useSelector(state => state.albums.selectedAlbum)
     const navigate = useNavigate()
+    
 
 
     const deleteHandler = () => {

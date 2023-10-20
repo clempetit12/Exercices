@@ -16,6 +16,7 @@ function App() {
   const formMode = useSelector(state => state.albums.formMode)
   const albums = useSelector(state => state.albums.albums)
   const dispatch = useDispatch()
+  const filteredAlbum = useSelector(state => state.albums.filteredAlbum)
 
 
   useEffect(() => {
@@ -41,7 +42,7 @@ function App() {
             </div>
             <hr />
             <div className={styles.card}>
-            {
+            {filteredAlbum !== null ? <AlbumDisplay key={filteredAlbum.id} album={filteredAlbum[0]} /> :
               albums.length === 0 ? (
                 <p>Il n'y a pas d'albums</p>
               ) : albums.map(album => <AlbumDisplay key={album.id} album={album} />)

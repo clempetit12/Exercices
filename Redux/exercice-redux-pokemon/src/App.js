@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPokedex, setClearMonPokedex, setSelectedPokemon } from './Pokedex/pokedexSlice';
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import PokeDisplay from './Pokedex/PokeDisplay';
-import Modal from './Modal/Modal';
+
 
 function App() {
 
@@ -14,6 +13,7 @@ function App() {
   const pokedex = useSelector(state => state.pokedex.pokedex)
   const monPokedex = useSelector(state => state.pokedex.monPokedex)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const selectedPokemon = useSelector(state => state.pokedex.selectedPokemon)
 
   const openModal = () => {
     console.log('"modal');
@@ -26,13 +26,14 @@ function App() {
     setIsModalOpen(false);
   };
   const clear = () => {
-    dispatch(setSelectedPokemon(null))
+    
    dispatch(setClearMonPokedex([]))
   }
 
   useEffect(() => {
     dispatch(fetchPokedex())
     console.table(pokedex);
+   
   }, [])
 
 
@@ -72,10 +73,10 @@ function App() {
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      {monPokedex.map((poke, index) =><div className="card row m-3" key={index}><div className='col-3 text-light'><img src={poke.sprites.front_shiny}/></div>
-                      <div className='col-3 text-light'><span>Name</span><div>{poke.name}</div></div>
-                      <div className='col-3 text-light'><span>Height</span><div>{poke.height}</div></div>
-                      <div className='col-3 text-light'><span>Weight</span><div>{poke.weight}</div></div>
+                      {monPokedex.map((poke, index) =><div className="row m-3 border text-center justify-content-center" key={index}><div className='col-3 text-light'><img src={poke.sprites.front_shiny}/></div>
+                      <div className='col-3 text-light  align-items-center'><span className='align-middle'>Name</span><div>{poke.name}</div></div>
+                      <div className='col-3 text-light justify-content-center'><span>Height</span><div>{poke.height}</div></div>
+                      <div className='col-3 text-light justify-content-center'><span>Weight</span><div>{poke.weight}</div></div>
                       </div>)}
                     </div>
                     <div className="modal-footer">
@@ -89,7 +90,7 @@ function App() {
 
 
 
-                <button class="btn btn-danger" onClick={() => clear} type="submit">x Clear</button>
+                <button class="btn btn-danger" onClick={() => clear()} type="submit">x Clear</button>
                 <button class="btn btn-primary" type="submit">Show</button>
 
               </form>

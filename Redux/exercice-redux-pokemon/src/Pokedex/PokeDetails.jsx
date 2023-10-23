@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { setMonPokedex } from "./pokedexSlice"
+import { setMonPokedex, setSelectedPokemon } from "./pokedexSlice"
 import { useEffect } from "react"
 
 const PokeDetails = () => {
@@ -10,12 +10,19 @@ const PokeDetails = () => {
 
     const addPokedex = () => {
         dispatch(setMonPokedex(selectedPokemon))
+        
 
     }
+  
 
     useEffect(() => {
         console.table(monPokedex);
-    }, [])
+
+    }, [selectedPokemon])
+
+    if (!selectedPokemon) {
+        return <div>Aucun Pokémon sélectionné.</div>;
+      }
     return (
         <>
             <div className="container">
@@ -47,7 +54,7 @@ const PokeDetails = () => {
                     </div>
                 </div>
              
-                    {selectedPokemon.moves.map((index,m)=> <button className="btn btn-warning m-2" index={index}>{m.moves}</button>)}
+                    {selectedPokemon.moves.map((move,index)=> <button className="btn btn-warning m-2" key={index}>{move.move.name}</button>)}
 
                 
             </div>

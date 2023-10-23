@@ -53,6 +53,10 @@ const authSlice = createSlice({
         authMode: "Se connecter"
     },
     reducers: {
+        logOutAction(state, action) {
+            state.user = null
+            localStorage.removeItem('token')
+          },
         setAuthMode: (state, action) => {
             state.authMode = action.payload
         }
@@ -73,5 +77,5 @@ const authSlice = createSlice({
 
 
 })
-export const { setUser, removeUser, setAuthMode } = authSlice.actions
+export const { setUser, removeUser, setAuthMode, logOutAction } = authSlice.actions
 export default authSlice.reducer

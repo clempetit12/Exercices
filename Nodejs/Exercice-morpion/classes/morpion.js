@@ -1,57 +1,55 @@
 export class Morpion {
     constructor() {
 
-        this.morpion = new Array(3);
-        for (let i = 0; i < 3; i++) {
-            this.morpion[i] = new Array(3);
-        }
-            
-   
-          }
-    
+        this.morpion = Array(3).fill(null).map(() => Array(3).fill(null));
+
+    }
+
     setValeur(ligne, colonne, valeur){
-        this.morpion[ligne][colonne] = valeur
+       return this.morpion[ligne][colonne] = valeur
     }
 
     getValeur(ligne, colonne){
-        this.morpion[ligne][colonne]
+        return this.morpion[ligne][colonne]
     }
-
-
-  
-      
-    setWin () {
-        function estTableauPlein(morpion) {
-            for (let i = 0; i < morpion.length; i++) {
-              for (let j = 0; j < morpion[i].length; j++) {
-                if (morpion[i][j] === undefined || morpion[i][j] === null) {
-                  return false; // Le tableau n'est pas plein
-                }
-              }
-            }
-            return true; // Le tableau est plein
-          }
-        if (estTableauPlein) {
-            console.log("vous avez gagné");
-        } else {
-            console.log("La partie n'est pas finie");
-        }
-    }
-
-    setPlay () {
-        function isColonneRemplie(morpion, colonneIndex) {
-            for (let i = 0; i < morpion.length; i++) {
-                if (morpion[i][colonneIndex] === undefined || morpion[i][colonneIndex] === null) {
-                    return false;
+    setWin() {
+        // Vérification des lignes et des colonnes
+        for (let i = 0; i < 3; i++) {
+            if (this.morpion[i][0] === this.morpion[i][1] && this.morpion[i][1] === this.morpion[i][2]) {
+                if (this.morpion[i][0] !== null) {
+                    return true;
                 }
             }
-            return true;
+            if (this.morpion[0][i] === this.morpion[1][i] && this.morpion[1][i] === this.morpion[2][i]) {
+                if (this.morpion[0][i] !== null) {
+                    return true;
+                }
+            }
         }
-        if (isColonneRemplie(morpion, colonneIndex)) {
-            console.log(`La colonne ${colonneIndex} est remplie.`);
-        } else {
-            console.log(`La colonne ${colonneIndex} n'est pas entièrement remplie.`);
+
+        // Vérification des diagonales
+        if (
+            (this.morpion[0][0] === this.morpion[1][1] && this.morpion[1][1] === this.morpion[2][2]) ||
+            (this.morpion[0][2] === this.morpion[1][1] && this.morpion[1][1] === this.morpion[2][0])
+        ) {
+            if (this.morpion[1][1] !== null) {
+                return true;
+            }
         }
-        
+
+        // Aucun gagnant
+        return false;
     }
+
+    setPlay(colonneIndex) {
+        // Vérification si la colonne est remplie
+        for (let i = 0; i < 3; i++) {
+            if (this.morpion[i][colonneIndex] === null) {
+                return false; // La colonne n'est pas complètement remplie
+            }
+        }
+        return true; // La colonne est complètement remplie
+    }
+
+
 }

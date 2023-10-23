@@ -1,16 +1,10 @@
 import { input } from "./tools.js";
 
-
-
-
 export class Ihm {
   constructor() {
     this.joueur1 = true;
-    this.joueur2 = false
+    this.joueur2 = false;
   }
-
-
-
 
   async menu(morpion) {
     while (!morpion.setWin()) {
@@ -20,7 +14,6 @@ export class Ihm {
         let positionLigne1 = await input("Joueur 1, saisissez la position ligne :");
         let positionColonne1 = await input("Joueur 1, saisissez la position colonne :");
 
-        // Vérifier si la position est déjà occupée
         if (!morpion.getValeur(positionLigne1, positionColonne1)) {
           morpion.setValeur(positionLigne1, positionColonne1, "x");
           console.table(morpion);
@@ -29,7 +22,7 @@ export class Ihm {
         } else {
           console.log("Cette position est déjà occupée. Veuillez choisir une autre position.");
         }
-     if (this.joueur2) {
+      } else if (this.joueur2) {
         let positionLigne2 = await input("Joueur 2, saisissez la position ligne :");
         let positionColonne2 = await input("Joueur 2, saisissez la position colonne :");
 
@@ -44,16 +37,11 @@ export class Ihm {
       }
     }
 
-    console.log("La partie est terminée.");
+    if (!this.joueur1) {
+      console.log(`La partie est terminée.Félicitations au joueur 1 !`);
+    } else {
+      console.log(`La partie est terminée. Félicitations au joueur 2 !`);
+    }
+
   }
 }
-}
-
-
- 
-           
-            
-     
-
-  
-  

@@ -41,15 +41,5 @@ export class Morpion {
         return false;
     }
 
-    setPlay(colonneIndex) {
-        // Vérification si la colonne est remplie
-        for (let i = 0; i < 3; i++) {
-            if (this.morpion[i][colonneIndex] === null) {
-                return false; // La colonne n'est pas complètement remplie
-            }
-        }
-        return true; // La colonne est complètement remplie
-    }
-
-
+    
 }

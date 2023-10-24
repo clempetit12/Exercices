@@ -2,15 +2,22 @@ export class Morpion {
     constructor() {
 
         this.morpion = Array(3).fill(null).map(() => Array(3).fill(null));
+        this.partiegagnée = 0
 
     }
 
     setValeur(ligne, colonne, valeur){
-       return this.morpion[ligne][colonne] = valeur
+      
+            return this.morpion[ligne][colonne] = valeur
+        
+        
+   
     }
 
     getValeur(ligne, colonne){
-        return this.morpion[ligne][colonne]
+      
+            return this.morpion[ligne][colonne]
+        
     }
     setWin() {
         // Vérification des lignes et des colonnes
@@ -39,6 +46,10 @@ export class Morpion {
 
         // Aucun gagnant
         return false;
+    }
+    setPartieGagné () { 
+        return this.partiegagnée 
+
     }
 
     

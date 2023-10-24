@@ -42,7 +42,7 @@ function App() {
       <header>
         <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
           <div className="container-fluid">
-            <NavLink to={"/pokelist"} aria-current="page" className="nav-link active "> <span className="navbar-brand"><img src='https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C
+            <NavLink to={"/"} aria-current="page" className="nav-link active "> <span className="navbar-brand"><img src='https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C
 3%A9mon_logo.svg'/></span></NavLink>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">

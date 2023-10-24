@@ -15,13 +15,19 @@ export class Ihm {
 
       if (this.joueur1) {
         let positionLigne1 = await input("Joueur 1, saisissez la position ligne :");
-        if (typeof positionLigne1 === undefined ) {
-          console.log("veuillez entrer un chiffre");
+        let positionLigne1Chiffre = parseInt(positionLigne1)
+        while(positionLigne1Chiffre === undefined) {
+          positionLigne1 = await input("Joueur 1, saisissez la position ligne :");
         }
         let positionColonne1 = await input("Joueur 1, saisissez la position colonne :");
-        if (typeof positionLigne1 === undefined || typeof positionColonne1 === undefined) {
-          console.log("veuillez entrer un chiffre");
+        console.log(positionLigne1Chiffre);
+        let positionColonne1Chiffre = parseInt(positionColonne1)
+        while(positionColonne1Chiffre === undefined) {
+          positionColonne1 = await input("Joueur 1, saisissez la position colonne :");
         }
+        console.log(positionColonne1Chiffre);
+        
+       
         if (!morpion.getValeur(positionLigne1, positionColonne1)) {
           morpion.setValeur(positionLigne1, positionColonne1, "x");
           console.table(morpion);
@@ -35,7 +41,12 @@ export class Ihm {
       } else if (this.joueur2) {
         let positionLigne2 = await input("Joueur 2, saisissez la position ligne :");
         let positionColonne2 = await input("Joueur 2, saisissez la position colonne :");
-
+        while (positionLigne2 !== Number ||positionColonne2 !== Number){
+          console.log("Veuillez entrer un chiffre");
+          positionLigne2 = await input("Joueur 1, saisissez la position ligne :");
+          positionColonne2 = await input("Joueur 1, saisissez la position colonne :");
+        }
+        console.table(morpion);
         if (!morpion.getValeur(positionLigne2, positionColonne2)) {
           morpion.setValeur(positionLigne2, positionColonne2, "o");
           console.table(morpion);
@@ -53,7 +64,7 @@ export class Ihm {
       this.partie++
       console.log(`La partie est terminée.Félicitations au joueur 1, vous avez gagné en ${this.cptJoueur1} coups!`);
       console.log(`Nombre de partie gagnée : ${this.partie}`);
-      
+
     } else {
       this.partie++
       console.log(`La partie est terminée. Félicitations au joueur 2, vous avez gagné en ${this.cptJoueur2} coups  !`);

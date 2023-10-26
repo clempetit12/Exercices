@@ -1,6 +1,7 @@
 export class Commande {
-    constructor (id, produits) {
-        this.id = id,
+    constructor (client, produits) {
+        this.id = Date.now(),
+        this.client= client
         this.produits = produits
 
     }

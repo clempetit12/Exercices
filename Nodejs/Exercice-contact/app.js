@@ -1,7 +1,7 @@
 import express from 'express'
 import Contact from './models/contact.js';
 import ContactDao from './dao/contactDao.js';
-import { authentification } from './middleware/authentificationMid.js';
+import { authMiddleware } from './middleware/authentificationMid.js';
 import { dateLogging, dateMiddleware } from './middleware/dateMidl.js';
 
 const contactDao = new ContactDao()
@@ -14,7 +14,7 @@ app.use(express.json());
 
 
  //ajouter un contact
- app.post('/contacts',authentification, (req, res) => {
+ app.post('/contacts',authMiddleware, (req, res) => {
     const {firstname, lastname, email} = req.body;
     let newContact = new Contact (null,firstname, lastname, email);
     res.json(contactDao.save(newContact));
@@ -41,7 +41,7 @@ app.get('/contacts', (req, res) => {
 
 
 // Modifier un contact par son id
-app.put('/contacts/:id',authentification, (req, res) => {
+app.put('/contacts/:id',authMiddleware, (req, res) => {
     
     const {id,firstname, lastname, email} = req.body;
     if(+req.params.id != id) res.sendStatus(409);
@@ -51,7 +51,7 @@ app.put('/contacts/:id',authentification, (req, res) => {
 
 
 // Supprimer un contact
-app.delete('/contacts/:id',authentification, (req, res) => {
+app.delete('/contacts/:id',authMiddleware, (req, res) => {
     contactDao.deleteContact(+req.params.id);
     res.sendStatus(200);
 });

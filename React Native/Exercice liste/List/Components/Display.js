@@ -34,10 +34,10 @@ export default function Display (props) {
         <TextInput style={styles.input} onChangeText={recupInput} value={textInput}></TextInput>
         <View style={styles.containerButton}>
         <Button style={styles.addButton} title="Ajouter article" onPress={addItemToBasket}></Button>
-        <TouchableOpacity style={styles.cancelButton} >
-            <Text style={styles.buttonText} onPress={()=> {props.closeModal()}}>ANNULER</Text>
+        <Button style={styles.cancelButton} color="red" title="Annuler" onPress={()=> {props.closeModal()}}>
+            
         
-        </TouchableOpacity>
+        </Button>
         
         </View>
       

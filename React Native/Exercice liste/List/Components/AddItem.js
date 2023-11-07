@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { Button, FlatList, StyleSheet, View, Text, Touchable, TouchableOpacity } from "react-native";
+import { Button, FlatList, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Display from "./Display";
+import ModalDetails from "./ModalDetails";
 
 export default function AddItem() {
 
     [articles, setArticles] = useState([])
     const [modalVisible, setModalVisible] = useState(false)
+    const [modalDetailsVisible, setModalDetailsVisible] = useState(false)
+    const [selectedArticle, setSelectedArticle] = useState("")
 
     function addArticle() {
         setModalVisible(true)
 
     }
     function addArticleToBasket(newArticle) {
-        setArticles([...articles, newArticle])
+        setArticles(prevArticles=> [...prevArticles, newArticle])
     }
 
     function closeModal() {
@@ -20,13 +23,21 @@ export default function AddItem() {
         setModalVisible(false)
    
     }
-    function deleteArticle (id) {
-       
-        console.log("delete");
-        setArticles(prevArticles=> prevArticles.filter((art=>art.id !== id )))
 
-
+    function closeModalDetails() {
+        console.log(articles);
+        setModalDetailsVisible(false)
+   
     }
+ function descriptionArticle (article) {
+    setSelectedArticle(article)
+    console.log("selectedarticle"+selectedArticle);
+    setModalDetailsVisible(true)
+    
+
+
+
+ }
 
     return (
         <View style={styles.container}>
@@ -35,14 +46,19 @@ export default function AddItem() {
            
             <FlatList data={articles} renderItem={(article) => {
                 return (
-                    <TouchableOpacity onPress={()=>deleteArticle(article.item.id)}>
-                        <Text style={styles.card}>{article.item.text} </Text>
+                    <TouchableOpacity  onPress={()=>descriptionArticle(article.item)}>
+                        <Text style={styles.card}>{article.item.text}  </Text>
+                       
+          
+
+                      
                     </TouchableOpacity>
                 )
             }} keyExtractor={(item, index) => {
                 return index
             }} />
-
+             {modalDetailsVisible && <ModalDetails visible={modalDetailsVisible} closeModalDetails={closeModalDetails} article= {selectedArticle}/>}
+            
         </View>
 
     )

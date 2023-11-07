@@ -6,24 +6,39 @@ export default function Display (props) {
 
     const {addArticleToBasket} = props
     const {closeModal} = props
-    const [textInput,setTextInput] = useState("")
+    const [textInputName,setTextInputName] = useState("")
+    const [textInputPrice,setTextInputPrice] = useState("")
+    const [textInputDescription,setTextInputDescription] = useState("")
 
-    function recupInput(enterText){
-        setTextInput(enterText)
-        console.log(textInput)
+    function recupInputName(enterTextName){
+        setTextInputName(enterTextName)
+ 
+    }
+    function recupInputPrice( enterTextPrice){
+        setTextInputPrice(enterTextPrice)
+       
+     
+    }
+    function recupInputDescription( enterTextDescription){
+        setTextInputDescription(enterTextDescription)
+      
     }
 
     const addItemToBasket = () => {
         console.log("ajouter article");
-        const newArticle = {text: textInput, id: articles.length+1}
+        //Math.random().toString pour générer un id aléatoire
+        const newArticle = {text: textInputName, price: textInputPrice, description: textInputDescription, id: Date.now()}
+        console.log(newArticle);
         addArticleToBasket(newArticle)
-        setTextInput("")
+        setTextInputName("")
+        setTextInputPrice("")
+        setTextInputDescription("")
        closeModal()
         
         
     }
     return(
-        <Modal style={styles.container} visible={props.visible}>
+        <Modal style={styles.container} visible={props.visible} animationType="slide">
             <View style={styles.centeredContainer}>
             <Image  
         width={200}
@@ -31,7 +46,9 @@ export default function Display (props) {
         source={{
             uri: "https://t4.ftcdn.net/jpg/01/33/43/31/360_F_133433110_zgatj8cIiWvu5LuIsFd1Y1XED7vnptOe.jpg"}} />
       
-        <TextInput style={styles.input} onChangeText={recupInput} value={textInput}></TextInput>
+        <TextInput style={styles.input} placeholder="Article" onChangeText={recupInputName} value={textInputName}></TextInput>
+        <TextInput style={styles.input} placeholder="Prix article" onChangeText={recupInputPrice} value={textInputPrice}></TextInput>
+        <TextInput style={styles.input} placeholder="Description article" onChangeText={recupInputDescription} value={textInputDescription}></TextInput>
         <View style={styles.containerButton}>
         <Button style={styles.addButton} title="Ajouter article" onPress={addItemToBasket}></Button>
         <Button style={styles.cancelButton} color="red" title="Annuler" onPress={()=> {props.closeModal()}}>

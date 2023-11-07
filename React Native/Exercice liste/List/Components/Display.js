@@ -35,7 +35,7 @@ export default function Display (props) {
         <View style={styles.containerButton}>
         <Button style={styles.addButton} title="Ajouter article" onPress={addItemToBasket}></Button>
         <TouchableOpacity style={styles.cancelButton} >
-            <Text style={styles.buttonText}>ANNULER</Text>
+            <Text style={styles.buttonText} onPress={()=> {props.closeModal()}}>ANNULER</Text>
         
         </TouchableOpacity>
         

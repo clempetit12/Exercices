@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, FlatList, StyleSheet, View, Text } from "react-native";
+import { Button, FlatList, StyleSheet, View, Text, Touchable, TouchableOpacity } from "react-native";
 import Display from "./Display";
 
 export default function AddItem() {
@@ -18,17 +18,26 @@ export default function AddItem() {
     function closeModal() {
         console.log(articles);
         setModalVisible(false)
+   
+    }
+    function deleteArticle (id) {
+       
+        console.log("delete");
+        setArticles(prevArticles=> prevArticles.filter((art=>art.id !== id )))
+
+
     }
 
     return (
         <View style={styles.container}>
             <Button style={styles.myButton} onPress={addArticle} title="Ajouter un article +"></Button>
             <Display visible={modalVisible} closeModal={closeModal} addArticleToBasket={addArticleToBasket}></Display>
+           
             <FlatList data={articles} renderItem={(article) => {
                 return (
-                    <View>
+                    <TouchableOpacity onPress={()=>deleteArticle(article.item.id)}>
                         <Text style={styles.card}>{article.item.text} </Text>
-                    </View>
+                    </TouchableOpacity>
                 )
             }} keyExtractor={(item, index) => {
                 return index

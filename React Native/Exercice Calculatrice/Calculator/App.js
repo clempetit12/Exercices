@@ -1,14 +1,12 @@
-import { StyleSheet, Text, TextInput, View, Function } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
-import math from 'mathjs';
-import evaluate from 'mathjs'
+
 
 import Boutons from './Components/Boutons'
 
 export default function App() {
 
   const [textInput, setTextInput] = useState("")
-  const[numbers, setNumbers] =useState([])
   const [expression, setExpression] = useState("")
 
 const updateInput = (value) => {
@@ -25,6 +23,9 @@ function handleCalculate (){
 
 };
 
+function del () {
+  setTextInput((prevText) => prevText.slice(0, -1))
+}
 
 function clearInput() {
   setTextInput(" "),
@@ -40,7 +41,7 @@ function clearInput() {
       <View style={styles.container2}>
         <View style={styles.row}>
         <Boutons text="AC" carreGris ={"carreGris"} clearInput={clearInput}  />
-        <Boutons text="^" carreGris ={"carreGris"}  updateInput={updateInput}/>
+        <Boutons text="**" carreGris ={"carreGris"}  updateInput={updateInput}/>
         <Boutons text="%" carreGris ={"carreGris"}  updateInput={updateInput}/>
         <Boutons text="/" carreGris ={"carreGris"}  updateInput={updateInput}/>
         </View>
@@ -65,7 +66,7 @@ function clearInput() {
         <View style={styles.row}>
         <Boutons text="." rondBlanc ={"rondBlanc"}  updateInput={updateInput} />
         <Boutons text="0" rondBlanc ={"rondBlanc"}  updateInput={updateInput}/>
-        <Boutons text="Del" rondBlanc ={"rondBlanc"}  />
+        <Boutons text="Del" rondBlanc ={"rondBlanc"}  del={del} />
         <Boutons text="=" handleCalculate= {handleCalculate} />
         </View>
       </View>
@@ -78,7 +79,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexWrap: "wrap",
-  
     backgroundColor: 'black',
 
   },
@@ -88,9 +88,12 @@ const styles = StyleSheet.create({
     fontSize: 40
   },
   textInput: {
-    width: '100%',
+    width: '80%',
     height: 300,
-    color: "white"
+    color: "white",
+    textAlign: "right",
+    fontSize:40,
+    
 
   },
   container2: {
@@ -102,7 +105,6 @@ const styles = StyleSheet.create({
     gap: 30,
     alignItems: 'center',
     justifyContent: 'center'
-
   }
 })
 

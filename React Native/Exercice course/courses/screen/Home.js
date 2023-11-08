@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'reac
 import React from 'react'
 import { useState } from "react";
 
-export default function Home({navigation}) {
+export default function Home({navigation, route}) {
 
     const [articles, setArticles] = useState([
         {
@@ -11,9 +11,14 @@ export default function Home({navigation}) {
             "quantity": 2
         }
     ])
+
+
+    function add (newItem) {
+setArticles(prevarticle=> [...prevarticle,newItem])
+    }
   return (
     <View style={styles.container}>
-    <Button style={styles.myButton} onPress={() => navigation.navigate('AddItem')} title="Ajouter un article +"></Button>
+    <Button style={styles.myButton}  onPress={() => navigation.navigate('AddItem', { add })} title="Ajouter un article +"></Button>
 
    
     <FlatList data={articles} renderItem={(article) => {

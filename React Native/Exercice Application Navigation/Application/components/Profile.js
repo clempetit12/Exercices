@@ -7,14 +7,30 @@ export default function Profile({ navigation, route }) {
     const lastname = route.params.lastname
     const phoneNumber = route.params.phoneNumber
     return (
-        <View>
-            <Text>Profile</Text>
-            <Text>Prénom : {firstName}</Text>
-            <Text>Nom : {lastname}</Text>
-            <Text>Numéro de téléphone : {phoneNumber}</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Profile</Text>
+            <Text> <Text style={styles.bold}>Prénom</Text> : {firstName}</Text>
+            <Text><Text style={styles.bold}>Nom</Text>  : {lastname}</Text>
+            <Text><Text style={styles.bold}>Numéro de téléphone</Text>  : {phoneNumber}</Text>
 
         </View>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container : {
+        flex: 1,
+        alignItems: 'center',
+    
+
+    },
+    bold: {
+fontWeight: '700',
+fontSize: 20
+    },
+    title : {
+        fontSize: 50,
+        marginBottom: 50
+        
+    }
+})

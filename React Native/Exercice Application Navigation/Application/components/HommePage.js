@@ -9,16 +9,33 @@ export default function HommePage({navigation}) {
     {"firstName": "Thomas", "lastname": "Petit", "phoneNumber": "03 27 95 06 25"} ])
 
   return (
-    <View>
-      <FlatList data={contacts} renderItem={(contact) => {{
+    <View style={styles.container}>
+      <FlatList  data={contacts} renderItem={(contact) => {{
         return (
-            <Button title={contact.item.firstName} onPress={()=>navigation.navigate('Profile', {firstName: contact.item.firstName, lastname: contact.item.lastname, phoneNumber: contact.item.phoneNumber })}>
+            <Button style={styles.bouton} title={contact.item.firstName} onPress={()=>navigation.navigate('Profile', {firstName: contact.item.firstName, lastname: contact.item.lastname, phoneNumber: contact.item.phoneNumber })}>
               
                     </Button>
         )
-      }}}></FlatList>
+        // rajouter keyextractor
+      }}}></FlatList> 
+      
+
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+       padding:20
+   
+
+    },
+    bouton: {
+        alignItems: 'center',
+        padding:20,
+        marginBottom:50
+       
+
+        
+    }
+})

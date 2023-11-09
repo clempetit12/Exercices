@@ -2,17 +2,23 @@ import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'reac
 import React from 'react'
 import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from 'react-redux';
-import { addItemToBasket } from './courseSlice';
+import { addItemToBasket, setSelectedArticle } from './courseSlice';
 
 export default function Home({ navigation, route }) {
 
 
 const articles = useSelector(state=> state.articles.articles)
+const selectedArticle = useSelector(state => state.articles.selectedArticle)
+const dispatch = useDispatch()
    
+function detailsFunction(article) {
+dispatch(setSelectedArticle(article))
+    navigation.navigate('Details')
+}
 useEffect(() => {
-
-   console.log(articles);
-}, [articles])
+console.log(selectedArticle);
+   
+}, [ selectedArticle])
 
     
     return (
@@ -22,7 +28,7 @@ useEffect(() => {
 
             <FlatList data={articles} renderItem={(article) => {
                 return (
-                    <TouchableOpacity onPress={() => navigation.navigate('Details', { id: article.item.id, itemName: article.item.itemName, price: article.item.price, quantity: article.item.quantity })} >
+                    <TouchableOpacity onPress={() => detailsFunction(article.item)} >
                         <Text style={styles.card}>{article.item.itemName}  </Text>
                     </TouchableOpacity>
                 )

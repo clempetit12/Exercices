@@ -4,15 +4,13 @@ import { useState } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteArticle } from './courseSlice';
 
-export default function Details({ route, navigation }) {
+export default function Details({  navigation }) {
 
-  const id = route.params.id
-  const itemName = route.params.itemName
-  const price = route.params.price
-  const quantity = route.params.quantity
+ 
 
 
   const articles = useSelector(state => state.articles.articles)
+  const selectedArticle = useSelector(state => state.articles.selectedArticle)
     const dispatch = useDispatch()
 
   function deleteItemBasket(id) {
@@ -22,12 +20,12 @@ export default function Details({ route, navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Details article</Text>
-      <Text>Article :{itemName}</Text>
-      <Text>Prix : {price}</Text>
-      <Text>Quantité: {quantity}</Text>
+      <Text>Article :{selectedArticle.itemName}</Text>
+      <Text>Prix : {selectedArticle.price}</Text>
+      <Text>Quantité: {selectedArticle.quantity}</Text>
       <Button style={styles.cancelButton} color="red" title="Supprimer article" onPress={() => {
 
-        navigation.navigate('Home'), deleteItemBasket(id)
+        navigation.navigate('Home'), deleteItemBasket(selectedArticle.id)
 
       }}></Button>
     </View>

@@ -6,8 +6,6 @@ import { deleteArticle } from './courseSlice';
 
 export default function Details({  navigation }) {
 
- 
-
 
   const articles = useSelector(state => state.articles.articles)
   const selectedArticle = useSelector(state => state.articles.selectedArticle)

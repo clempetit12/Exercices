@@ -14,7 +14,7 @@ export default function App() {
 
     const [latitude, setLatitude] = useState(null)
     const [longitude, setLongitude] = useState(null)
-    const [ville, setVille] =useState("")
+    const [data, setData] =useState([])
 
 
 function getlocation() {
@@ -32,9 +32,9 @@ function getlocation() {
     useEffect(() => {
         axios.get(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=y4M3uDDroEy9e8M2iljFwLDAdKEX3PJG&q=${latitude}%2C${longitude}&language=en-us&details=false&toplevel=false`)
         .then(response => {
-            const data = response.data.LocalizedName
+            const data = response.data
             console.log(data)
-            setVille(data)
+            setData(data)
         })
 
     }, [latitude,longitude])
@@ -45,8 +45,8 @@ function getlocation() {
             <Text>Latitude: {latitude}</Text>
             <Text>Longitude: {longitude}</Text>
             <Button title='Quelle ville ? ' onPress={() => getlocation()}></Button>
-            <Text>Département : </Text>
-            <Text>Ville : {ville}</Text>
+{/*             <Text>Département :{data.AdministrativeArea.LocalizedName} </Text> */}
+            <Text>Ville : {data.LocalizedName}</Text>
         </View>
     )
 }

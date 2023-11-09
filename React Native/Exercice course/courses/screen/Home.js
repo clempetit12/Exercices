@@ -2,38 +2,44 @@ import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'reac
 import React from 'react'
 import { useState } from "react";
 
-export default function Home({navigation, route}) {
+export default function Home({ navigation, route }) {
 
     const [articles, setArticles] = useState([
         {
-            "itemName" : "lait",
+            "id": 1,
+            "itemName": "lait",
             "price": 1.5,
             "quantity": 2
         }
     ])
 
 
-    function add (newItem) {
-setArticles(prevarticle=> [...prevarticle,newItem])
+    function add(newItem) {
+        setArticles(prevarticle => [...prevarticle, newItem])
     }
-  return (
-    <View style={styles.container}>
-    <Button style={styles.myButton}  onPress={() => navigation.navigate('AddItem', { add })} title="Ajouter un article +"></Button>
 
-   
-    <FlatList data={articles} renderItem={(article) => {
-        return (
-            <TouchableOpacity onPress={() => navigation.navigate('Details', { itemName: article.item.itemName, price: article.item.price, quantity: article.item.quantity})} >
-                <Text style={styles.card}>{article.item.itemName}  </Text>
-            </TouchableOpacity>
-        )
-    }} keyExtractor={(item, index) => {
-        return index
-    }} />
- 
-    
-</View>
-  )
+    function deleteArticle(id) {
+        setArticles(prevarticle => prevarticle.filter(art => art.id !== id))
+
+    }
+    return (
+        <View style={styles.container}>
+            <Button style={styles.myButton} onPress={() => navigation.navigate('AddItem', { add })} title="Ajouter un article +"></Button>
+
+
+            <FlatList data={articles} renderItem={(article) => {
+                return (
+                    <TouchableOpacity onPress={() => navigation.navigate('Details', { id: article.item.id, itemName: article.item.itemName, price: article.item.price, quantity: article.item.quantity, deleteArticle: deleteArticle })} >
+                        <Text style={styles.card}>{article.item.itemName}  </Text>
+                    </TouchableOpacity>
+                )
+            }} keyExtractor={(item, index) => {
+                return index
+            }} />
+
+
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({

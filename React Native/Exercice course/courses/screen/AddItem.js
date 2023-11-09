@@ -24,7 +24,7 @@ export default function AddItem({route,navigation}) {
       
     }
     function addItemToBasket() {
-        const newItem={"itemName": textInputName, "price": textInputPrice, "quantity": textInputQuantity}
+        const newItem={"id": Date.now(),"itemName": textInputName, "price": textInputPrice, "quantity": textInputQuantity}
         console.log(newItem)
         add(newItem)
     }
@@ -32,6 +32,7 @@ export default function AddItem({route,navigation}) {
   return (
   
     <View style={styles.centeredContainer}>
+        <Text style={styles.title}>Ajouter un article</Text>
 <TextInput style={styles.input} placeholder="Article" onChangeText={recupInputName} value={textInputName}></TextInput>
 <TextInput style={styles.input} placeholder="Prix article" onChangeText={recupInputPrice} value={textInputPrice}></TextInput>
 <TextInput style={styles.input} placeholder="Quantité " onChangeText={recupInputQuantity} value={textInputQuantity}></TextInput>
@@ -60,6 +61,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    title : {
+fontSize: 30,
+marginBottom: 20,
+color: 'black'
     },
     containerButton: {
         flexDirection: "row",

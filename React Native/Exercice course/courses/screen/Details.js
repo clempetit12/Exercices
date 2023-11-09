@@ -1,5 +1,8 @@
 import { StyleSheet, Text, View, Button } from 'react-native'
 import React from 'react'
+import { useState } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+import { deleteArticle } from './courseSlice';
 
 export default function Details({ route, navigation }) {
 
@@ -7,11 +10,14 @@ export default function Details({ route, navigation }) {
   const itemName = route.params.itemName
   const price = route.params.price
   const quantity = route.params.quantity
-  const deleteArticle = route.params.deleteArticle
+
+
+  const articles = useSelector(state => state.articles.articles)
+    const dispatch = useDispatch()
 
   function deleteItemBasket(id) {
     console.log("delete");
-    deleteArticle(id)
+    dispatch(deleteArticle(id))
   }
   return (
     <View style={styles.container}>
@@ -21,26 +27,27 @@ export default function Details({ route, navigation }) {
       <Text>Quantité: {quantity}</Text>
       <Button style={styles.cancelButton} color="red" title="Supprimer article" onPress={() => {
 
-navigation.navigate('Home'),deleteItemBasket(id)
+        navigation.navigate('Home'), deleteItemBasket(id)
 
-}}></Button>
+      }}></Button>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-alignItems: 'center',
-padding:20
+    alignItems: 'center',
+    padding: 20
   },
   cancelButton: {
     backgroundColor: "red",
     padding: 10,
     borderRadius: 5,
-    padding:20
-  }, 
+    padding: 20
+  },
   title: {
-    fontSize:30,
-    
+    fontSize: 30,
+    marginBottom: 20
+
   }
 })

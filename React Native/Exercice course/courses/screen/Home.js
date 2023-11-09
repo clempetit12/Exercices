@@ -1,35 +1,28 @@
 import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector,useDispatch } from 'react-redux';
+import { addItemToBasket } from './courseSlice';
 
 export default function Home({ navigation, route }) {
 
-    const [articles, setArticles] = useState([
-        {
-            "id": 1,
-            "itemName": "lait",
-            "price": 1.5,
-            "quantity": 2
-        }
-    ])
 
+const articles = useSelector(state=> state.articles.articles)
+   
+useEffect(() => {
 
-    function add(newItem) {
-        setArticles(prevarticle => [...prevarticle, newItem])
-    }
+   console.log(articles);
+}, [articles])
 
-    function deleteArticle(id) {
-        setArticles(prevarticle => prevarticle.filter(art => art.id !== id))
-
-    }
+    
     return (
         <View style={styles.container}>
-            <Button style={styles.myButton} onPress={() => navigation.navigate('AddItem', { add })} title="Ajouter un article +"></Button>
+            <Button style={styles.myButton} onPress={() => navigation.navigate('AddItem')} title="Ajouter un article +"></Button>
 
 
             <FlatList data={articles} renderItem={(article) => {
                 return (
-                    <TouchableOpacity onPress={() => navigation.navigate('Details', { id: article.item.id, itemName: article.item.itemName, price: article.item.price, quantity: article.item.quantity, deleteArticle: deleteArticle })} >
+                    <TouchableOpacity onPress={() => navigation.navigate('Details', { id: article.item.id, itemName: article.item.itemName, price: article.item.price, quantity: article.item.quantity })} >
                         <Text style={styles.card}>{article.item.itemName}  </Text>
                     </TouchableOpacity>
                 )

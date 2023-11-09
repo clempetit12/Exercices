@@ -1,58 +1,64 @@
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native'
 import React from 'react'
 import { useState } from "react"
+import { useSelector, useDispatch } from 'react-redux';
+import { addItemToBasket } from "./courseSlice.js"
 
-export default function AddItem({route,navigation}) {
 
-  const add = route.params.add
+export default function AddItem({  navigation }) {
 
-    const [textInputName,setTextInputName] = useState("")
-    const [textInputPrice,setTextInputPrice] = useState("")
-    const [textInputQuantity,setTextInputQuantity] = useState("")
 
-    function recupInputName(enterTextName){
+
+    const [textInputName, setTextInputName] = useState("")
+    const [textInputPrice, setTextInputPrice] = useState("")
+    const [textInputQuantity, setTextInputQuantity] = useState("")
+    const articles = useSelector(state => state.articles.articles)
+    const dispatch = useDispatch()
+    function recupInputName(enterTextName) {
         setTextInputName(enterTextName)
- 
+
     }
-    function recupInputPrice( enterTextPrice){
+    function recupInputPrice(enterTextPrice) {
         setTextInputPrice(enterTextPrice)
-       
-     
+
+
     }
-    function recupInputQuantity( enterTextQuantity){
+    function recupInputQuantity(enterTextQuantity) {
         setTextInputQuantity(enterTextQuantity)
-      
-    }
-    function addItemToBasket() {
-        const newItem={"id": Date.now(),"itemName": textInputName, "price": textInputPrice, "quantity": textInputQuantity}
-        console.log(newItem)
-        add(newItem)
+
     }
 
-  return (
-  
-    <View style={styles.centeredContainer}>
-        <Text style={styles.title}>Ajouter un article</Text>
-<TextInput style={styles.input} placeholder="Article" onChangeText={recupInputName} value={textInputName}></TextInput>
-<TextInput style={styles.input} placeholder="Prix article" onChangeText={recupInputPrice} value={textInputPrice}></TextInput>
-<TextInput style={styles.input} placeholder="Quantité " onChangeText={recupInputQuantity} value={textInputQuantity}></TextInput>
-<View style={styles.containerButton}>
-<Button style={styles.addButton} title="Ajouter article" onPress={() => {
 
-    navigation.navigate('Home'),addItemToBasket()
-  
-  }}></Button>
+    function add() {
+       
+        dispatch(addItemToBasket({itemName: textInputName, price: textInputPrice, quantity: textInputQuantity}))
+        console.log(articles);
+    }
+
+    return (
+
+        <View style={styles.centeredContainer}>
+            <Text style={styles.title}>Ajouter un article</Text>
+            <TextInput style={styles.input} placeholder="Article" onChangeText={recupInputName} value={textInputName}></TextInput>
+            <TextInput style={styles.input} placeholder="Prix article" onChangeText={recupInputPrice} value={textInputPrice}></TextInput>
+            <TextInput style={styles.input} placeholder="Quantité " onChangeText={recupInputQuantity} value={textInputQuantity}></TextInput>
+            <View style={styles.containerButton}>
+                <Button style={styles.addButton} title="Ajouter article" onPress={() => {
+
+                    navigation.navigate('Home'), add()
+
+                }}></Button>
 
 
 
-</View>
+            </View>
 
-    </View>
-
-
+        </View>
 
 
-  )
+
+
+    )
 }
 
 const styles = StyleSheet.create({
@@ -62,10 +68,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    title : {
-fontSize: 30,
-marginBottom: 20,
-color: 'black'
+    title: {
+        fontSize: 30,
+        marginBottom: 20,
+        color: 'black'
     },
     containerButton: {
         flexDirection: "row",
@@ -73,14 +79,14 @@ color: 'black'
         width: '70%',
     },
     input: {
-       borderWidth: 1,
-       borderColor: "black",
-       width: 300,
-       height: 50,
-       borderRadius: 10,
-       marginBottom: 20,
-       color: "black",
-       backgroundColor: "white"
+        borderWidth: 1,
+        borderColor: "black",
+        width: 300,
+        height: 50,
+        borderRadius: 10,
+        marginBottom: 20,
+        color: "black",
+        backgroundColor: "white"
 
     },
 

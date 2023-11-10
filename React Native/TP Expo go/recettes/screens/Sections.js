@@ -47,9 +47,14 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     card: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         padding: 20,
         marginTop: 20,
-        color: "white",
+        margin: 10,
+        backgroundColor: 'white', 
         borderRadius: 10,
     },
     categoryTitle: {

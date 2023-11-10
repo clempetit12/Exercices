@@ -18,7 +18,7 @@ export default function App() {
         <Stack.Navigator initialRouteName='Sections'>
           <Stack.Screen name='Sections' component={Sections} options={{ title: "All Categories" }}></Stack.Screen>
           <Stack.Screen name='MealsOverview' component={MealsOverview} ></Stack.Screen>
-          <Stack.Screen name='Details' component={Details} ></Stack.Screen>
+          <Stack.Screen name='Details' component={Details} options={{ title: "About the meal" }} ></Stack.Screen>
 
         </Stack.Navigator>
 

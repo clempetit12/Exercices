@@ -7,14 +7,14 @@ export default function Sections({ navigation }) {
     const categories = useSelector(state => state.categories.categories)
     const meals = useSelector(state => state.meals.meals)
     const selectedCategoryId = useSelector(state => state.meals.selectedCategoryId)
-    const mealsFromCategory = useSelector(state=> state.meals.mealsFromCategory)
-    
+    const mealsFromCategory = useSelector(state => state.meals.mealsFromCategory)
+
     const dispatch = useDispatch()
 
     function displayMeals(id) {
         const mealsSelected = meals.filter(m => m.categoryIds.includes(id))
         dispatch(setMealsFromCategory(mealsSelected));
-        dispatch(setSelectCategory(id)); 
+        dispatch(setSelectCategory(id));
         navigation.navigate('MealsOverview');
 
     }
@@ -25,8 +25,8 @@ export default function Sections({ navigation }) {
 
 
     return (
-        <SafeAreaView>
-            <FlatList data={categories} renderItem={(category) => {
+        <SafeAreaView style={styles.columns}>
+            <FlatList data={categories} numColumns={2}  renderItem={(category) => {
                 return (
                     <TouchableOpacity onPress={() => displayMeals(category.item.id)} >
                         <View style={[styles.card, { backgroundColor: category.item.color }]}>
@@ -36,7 +36,7 @@ export default function Sections({ navigation }) {
                     </TouchableOpacity>
                 )
             }} keyExtractor={(item, index) => {
-                return index
+                return index.toString()
             }} />
         </SafeAreaView>
     )
@@ -45,17 +45,23 @@ export default function Sections({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         padding: 20,
+
     },
     card: {
         flex: 1,
-        flexDirection: 'column',
+        aspectRatio: 1,
+        backgroundColor: 'blue',
+        margin: 8,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
-        marginTop: 20,
-        margin: 10,
-        backgroundColor: 'white', 
-        borderRadius: 10,
+        width: 150, 
+        height: 150,
+        borderRadius: 10
+
+    },
+    columns:{
+        alignItems:'center',
+        flex: 1
     },
     categoryTitle: {
         fontSize: 18,

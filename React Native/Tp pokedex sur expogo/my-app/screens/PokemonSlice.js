@@ -1,29 +1,32 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 
-export const fetchDetailsPokemons = createAsyncThunk(
-    "pokemons/fetchDetailsPokemons",
-    async (url) => {
-
-            const response = await fetch(url)
-            const data = await response.json()
-        
-        return data.types
-        }
-)
-
 export const fetchPokemons = createAsyncThunk(
-    "pokemons/fetchPokemons",
+    'pokemons/fetchPokemons',
     async () => {
+      const mainURL = 'https://pokeapi.co/api/v2/pokemon?offset=10&limit=50';
+      const response = await fetch(mainURL);
+      const data = await response.json();
+  
+      // Fetch details for each Pokémon
+      const detailsPromises = data.results.map(async (pokemon) => {
+        const detailsResponse = await fetch(pokemon.url);
+        const detailsData = await detailsResponse.json();
+        console.log(detailsData);
+        return detailsData;
+      });
 
-            const URL = `https://pokeapi.co/api/v2/pokemon?offset=10&limit=12`
-            const response = await fetch(URL)
-            const data = await response.json()
-         
-        return data.results
-        }
-    
-)
+      const detailsResults = await Promise.all(detailsPromises);
+      const combinedData = data.results.map((pokemon, index) => ({
+        mainData: pokemon,
+        detailsData: detailsResults[index],
+       
+      }));
+      console.log("combiné",combinedData);
+  
+      return combinedData;
+    }
+  );
 
         
   const pokemonsSlice = createSlice({
@@ -45,15 +48,15 @@ export const fetchPokemons = createAsyncThunk(
     extraReducers: (builder) => {
         builder.addCase(fetchPokemons.fulfilled, (state, action) => {
             state.pokemons = action.payload
+            console.log("statepokemon", state.pokemons);
 
 
         })
-        builder.addCase(fetchDetailsPokemons.fulfilled, (state, action) => {
-            state.pokemonsDetails = action.payload
-            
-       
-
-        })
+     /*    builder.addCase(fetchDetailsPokemons.fulfilled, (state, action) => {
+            const { id, types, sprites } = action.payload;
+            state.pokemonsDetails[id] = { types, sprites };
+          });
+           */
        
     },
   });

@@ -3,42 +3,45 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSelectedMeal } from './slice/mealsSlice'
 
-export default function MealsOverview({navigation}) {
+export default function MealsOverview({ navigation }) {
 
   const mealsFromCategory = useSelector(state => state.meals.mealsFromCategory)
   const selectedMeal = useSelector(state => state.meals.selectedMeal)
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   function displayDetailsMeals(meals) {
-dispatch(setSelectedMeal(meals))
-navigation.navigate('Details')
+    dispatch(setSelectedMeal(meals))
+    navigation.navigate('Details')
 
-  } 
+  }
   useEffect(() => {
-    console.log("selecte meal",selectedMeal);
+    console.log("selecte meal", selectedMeal);
   }, [selectedMeal])
 
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView >
       <FlatList data={mealsFromCategory} renderItem={(meals) => {
         return (
           <TouchableOpacity onPress={() => displayDetailsMeals(meals)} >
-            <View style={styles.card}>
-              <Image style={styles.image}
-                width={200}
-                height={200}
-                source={{
-                  uri: `${meals.item.imageUrl}`
-                }} />
+            <View style={styles.container}>
+              <View style={styles.card}>
+                <Image style={styles.image}
+                  width={200}
+                  height={200}
+                  source={{
+                    uri: `${meals.item.imageUrl}`
+                  }} />
 
-              <Text style={styles.mealsTitle} >{meals.item.title}  </Text>
-              <View style={styles.row}>
-                <Text style={styles.mealsDetails} >{meals.item.duration}  </Text>
-                <Text style={styles.mealsDetails} >{meals.item.complexity}  </Text>
-                <Text style={styles.mealsDetails} >{meals.item.affordability}  </Text>
+                <Text style={styles.mealsTitle} >{meals.item.title}  </Text>
+                <View style={styles.row}>
+                  <Text style={styles.mealsDetails} >{meals.item.duration}  </Text>
+                  <Text style={styles.mealsDetails} >{meals.item.complexity}  </Text>
+                  <Text style={styles.mealsDetails} >{meals.item.affordability}  </Text>
+                </View>
               </View>
             </View>
+
 
           </TouchableOpacity>
         )
@@ -54,18 +57,25 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 10
+    padding: 10,
+    overflow: 'hidden'
   },
+
   image: {
     width: 'auto',
-    borderRadius: 20
+   
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    marginBottom: 10
   },
   card: {
-    width: 'auto',
+    width: '80%',
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 20,
-    marginBottom:15
+    elevation: 7,
+   
+    
+    marginBottom: 15
 
   },
   mealsTitle: {
@@ -78,9 +88,9 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-around',  
-    marginTop: 10,  
- 
+    justifyContent: 'space-around',
+    marginTop: 10,
+
 
   }
 })

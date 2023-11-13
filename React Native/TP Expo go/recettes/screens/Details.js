@@ -26,18 +26,35 @@ export default function Details() {
         </View>
         <Text style={styles.ingredients}>Ingredients</Text>
         <View style={styles.horizontalLine}></View>
-        {selectedMeal.item.ingredients.map((ingredient, index) => (
-          <View key={index} style={styles.card}>
-            <Text style={styles.ingredientText}>{ingredient}</Text>
-          </View>
-        ))}
-           <Text style={styles.ingredients}>Steps</Text>
-           <View style={styles.horizontalLine}></View>
-           {selectedMeal.item.steps.map((ingredient, index) => (
-          <View key={index} style={styles.card}>
-            <Text style={styles.ingredientText}>{ingredient}</Text>
-          </View>
-        ))}
+        <FlatList
+          data={selectedMeal.item.ingredients}
+          renderItem={(ingredient) => {
+            return (
+              <TouchableOpacity>
+                <View style={styles.cardIngredient}>
+                  <Text style={styles.ingredientText}>{ingredient.item} </Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+          keyExtractor={(item, index) => index.toString()}
+        />
+     
+        <Text style={styles.ingredients}>Steps</Text>
+        <View style={styles.horizontalLine}></View>
+        <FlatList
+          data={selectedMeal.item.steps}
+          renderItem={(steps) => {
+            return (
+              <TouchableOpacity>
+                <View style={styles.card}>
+                  <Text style={styles.ingredientText}>{steps.item} </Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+          keyExtractor={(item, index) => index.toString()}
+        />
       </View>
 
 
@@ -47,15 +64,16 @@ export default function Details() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     alignItems: 'center',
-    padding: 20
   },
   image: {
     width: '100%'
   },
   title: {
-    color: 'black'
+    color: 'black',
+    fontSize: 20,
+    fontWeight: '500'
   },
   row: {
     flexDirection: 'row',
@@ -63,33 +81,41 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10
 
-
   },
   mealsDetails: {
     fontSize: 15,
     textAlign: 'center'
   },
   ingredients: {
-    color: "#dbb7a1"
+    color: "#dbb7a1",
+    fontWeight: '800',
+    fontSize: 20
   },
   horizontalLine: {
     borderBottomColor: "#dbb7a1",
     borderBottomWidth: 2,
     marginVertical: 10,
-    width: "100%"
+    width: "80%"
+  },
+  cardIngredient:{
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: "#dbb7a1",
+    marginBottom: 15,
+    width: "100%", 
+  
   },
   card: {
-    padding: 5,
-    marginTop: 20,
+    padding: 10,
     borderRadius: 10,
-    width: "100%",
-    height: "5%",
     backgroundColor: "#dbb7a1",
-    marginBottom:10
-    
+    marginBottom: 15,
+   
+    marginHorizontal: 100
+
   },
-  ingredientText:{
-    color:'black',
+  ingredientText: {
+    color: 'black',
     textAlign: 'center'
   }
 })

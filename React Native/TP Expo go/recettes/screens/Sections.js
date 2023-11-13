@@ -44,18 +44,18 @@ export default function Sections({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        padding: 10,
 
     },
     card: {
         flex: 1,
         aspectRatio: 1,
         backgroundColor: 'blue',
-        margin: 8,
+        margin: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        width: 150, 
-        height: 150,
+        width: 170, 
+        height: 170,
         borderRadius: 10
 
     },

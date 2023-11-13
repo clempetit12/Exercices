@@ -30,7 +30,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
       <Stack.Navigator initialRouteName='Drawer' >
-          <Stack.Screen name='Drawer' component={MyDrawer} />
+          <Stack.Screen name='Drawer' component={MyDrawer} options={{headerShown: false}} />
           <Stack.Screen name='Sections' component={Sections} options={{ title: "All Categories" }} />
           <Stack.Screen name='MealsOverview' component={MealsOverview} />
           <Stack.Screen name='Details' component={Details} options={{ title: "About the meal" }} />

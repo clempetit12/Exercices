@@ -52,7 +52,7 @@ export default function MealsOverview({ navigation }) {
   
                 
                 </View>
-                <Button title="+ Ajouter aux favoris"  color={"green"} onPress={() => {addToFavourite(meals)}} > </Button>
+                <Button  title="+ Ajouter aux favoris"  color={"green"} onPress={() => {addToFavourite(meals)}} > </Button>
              
               </View>
             </View>
@@ -99,12 +99,14 @@ const styles = StyleSheet.create({
   },
   mealsDetails: {
     fontSize: 15,
-    textAlign: 'center'
+    textAlign: 'center',
+    
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 10,
+    marginBottom:10
 
 
   }

@@ -9,7 +9,8 @@ const mealsSlice = createSlice(
          meals :MEALS,
          mealsFromCategory: [],
          selectedCategoryId: null,
-         selectedMeal: null
+         selectedMeal: null,
+         favouriteMeal: []
          
  
      },
@@ -23,11 +24,14 @@ const mealsSlice = createSlice(
         },
         setSelectedMeal : (state,action) => {
             state.selectedMeal= action.payload
+        },
+        setFavouriteMeal : (state,action) => {
+           state.favouriteMeal.push(action.payload)
         }
     
     },
 })
 
 
-export const {setSelectCategory,setMealsFromCategory,setSelectedMeal} = mealsSlice.actions
+export const {setSelectCategory,setMealsFromCategory,setSelectedMeal, setFavouriteMeal} = mealsSlice.actions
 export default mealsSlice.reducer

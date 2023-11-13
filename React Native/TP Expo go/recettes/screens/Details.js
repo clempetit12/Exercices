@@ -1,13 +1,17 @@
-import { SafeAreaView, StyleSheet, Text, View, Image, ScrollView, FlatList, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, Image, ScrollView, FlatList, TouchableOpacity, Button } from 'react-native'
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setFavouriteMeal } from './slice/mealsSlice'
 
 export default function Details() {
 
   const selectedMeal = useSelector(state => state.meals.selectedMeal)
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
     console.log("meal selectionn dans detail", selectedMeal);
+ 
   }, [selectedMeal])
   return (
     <ScrollView >
@@ -18,7 +22,7 @@ export default function Details() {
           source={{
             uri: `${selectedMeal.item.imageUrl}`
           }} />
-        <Text style={styles.title}>{selectedMeal.item.title}</Text>
+        <Text color={"purple"} style={styles.title}>{selectedMeal.item.title}</Text>
         <View style={styles.row}>
           <Text style={styles.mealsDetails} >{selectedMeal.item.duration}  </Text>
           <Text style={styles.mealsDetails} >{selectedMeal.item.complexity}  </Text>
@@ -55,6 +59,7 @@ export default function Details() {
           }}
           keyExtractor={(item, index) => index.toString()}
         />
+     
       </View>
 
 

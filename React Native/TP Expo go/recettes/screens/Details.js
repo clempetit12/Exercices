@@ -12,7 +12,7 @@ export default function Details() {
   useEffect(() => {
     console.log("meal selectionn dans detail", selectedMeal);
  
-  }, [selectedMeal])
+  }, [selectedMeal, favouriteMeal])
   return (
     <ScrollView >
       <View style={styles.container}>

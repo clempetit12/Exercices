@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, FlatList, Image
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFavouriteMeal, setSelectedMeal } from './slice/mealsSlice'
+import MealDetails from '../components/MealDetails'
 
 export default function MealsOverview({ navigation }) {
 
@@ -36,7 +37,8 @@ export default function MealsOverview({ navigation }) {
         return (
           <TouchableOpacity onPress={() => displayDetailsMeals(meals)} >
             <View style={styles.container}>
-              <View style={styles.card}>
+            <View style={styles.card}>
+            {/*  
                 <Image style={styles.image}
                   width={200}
                   height={200}
@@ -51,11 +53,13 @@ export default function MealsOverview({ navigation }) {
                   <Text style={styles.mealsDetails} >{meals.item.affordability}  </Text>
   
                 
-                </View>
+                </View> */}
+                <MealDetails imageUrl={meals.item.imageUrl} title={meals.item.title} duration={meals.item.duration} complexity={meals.item.complexity} affordability={meals.item.affordability}></MealDetails>
+                
                 <Button  title="+ Ajouter aux favoris"  color={"green"} onPress={() => {addToFavourite(meals)}} > </Button>
-             
+                </View>
               </View>
-            </View>
+          
 
 
           </TouchableOpacity>

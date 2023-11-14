@@ -4,15 +4,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const fetchPokemons = createAsyncThunk(
     'pokemons/fetchPokemons',
     async () => {
-      const mainURL = 'https://pokeapi.co/api/v2/pokemon?offset=10&limit=50';
-      const response = await fetch(mainURL);
+      const URL = 'https://pokeapi.co/api/v2/pokemon?offset=10&limit=50';
+      const response = await fetch(URL);
       const data = await response.json();
-  
-      // Fetch details for each Pokémon
       const detailsPromises = data.results.map(async (pokemon) => {
         const detailsResponse = await fetch(pokemon.url);
         const detailsData = await detailsResponse.json();
-        console.log(detailsData);
+  
         return detailsData;
       });
 
@@ -22,7 +20,7 @@ export const fetchPokemons = createAsyncThunk(
         detailsData: detailsResults[index],
        
       }));
-      console.log("combiné",combinedData);
+ 
   
       return combinedData;
     }
@@ -48,15 +46,11 @@ export const fetchPokemons = createAsyncThunk(
     extraReducers: (builder) => {
         builder.addCase(fetchPokemons.fulfilled, (state, action) => {
             state.pokemons = action.payload
-            console.log("statepokemon", state.pokemons);
+       
 
 
         })
-     /*    builder.addCase(fetchDetailsPokemons.fulfilled, (state, action) => {
-            const { id, types, sprites } = action.payload;
-            state.pokemonsDetails[id] = { types, sprites };
-          });
-           */
+   
        
     },
   });

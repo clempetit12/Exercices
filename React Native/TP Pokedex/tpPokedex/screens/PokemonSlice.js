@@ -26,12 +26,11 @@ export const fetchPokemonDetails = createAsyncThunk(
         const pokemonsListURL = 'https://pokeapi.co/api/v2/pokemon?offset=10&limit=12';
         const listResponse = await fetch(pokemonsListURL);
         const listData = await listResponse.json();
+        listData.forEach(pokemon => {
+            pokemons.push({ name: pokemon.name, url: pokemon.url })
+        });
   
-        // Pour chaque Pokémon dans la liste, récupérer les détails
-        for (const pokemon of listData.results) {
-          const details = await fetchPokemonDetails(pokemon.url);
-          pokemons.push({ name: pokemon.name, details });
-        }
+       
   
         // Faites quelque chose avec le tableau de pokemons, s'il y a lieu
         console.log("Tableau de pokemons", pokemons);

@@ -7,12 +7,12 @@ export default function Home({ navigation }) {
       <Text style={styles.title}>Attrapez les tous !!!</Text>
       <View style={styles.row} >
         <TouchableOpacity onPress={() => navigation.navigate("Pokedex")}>
-          <View style={[styles.card, { backgroundColor: "blue" }]}>
+          <View style={[styles.card, { backgroundColor: "lightblue" }]}>
             <Text style={styles.text}>Pokemons</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("MonPokedex")}>
-          <View style={[styles.card, { backgroundColor: "green" }]}>
+          <View style={[styles.card, { backgroundColor: "lightgreen" }]}>
             <Text style={styles.text}>Pokedex</Text>
           </View>
         </TouchableOpacity>
@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
   text: {
     alignItems: 'center',
     justifyContent: 'center',
-    color: "white"
+    color: "white",
+    fontWeight: '700',
+    fontSize: 20
   },
   row: {
     flexDirection: 'row',

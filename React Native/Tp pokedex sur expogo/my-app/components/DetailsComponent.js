@@ -10,7 +10,7 @@ export default function DetailsComponent({ selectedPokemon }) {
         <SafeAreaView>
             <View style={styles.bigContainer} >
                 <Text style={styles.title}>Details</Text>
-                <Text>{selectedPokemon.item.descriptionData.flavorText}</Text>
+                <Text>{selectedPokemon.descriptionData.flavorText}</Text>
                 <View style={styles.container}>
                     <View style={styles.card}>
                         <View style={styles.row}>
@@ -23,53 +23,44 @@ export default function DetailsComponent({ selectedPokemon }) {
                         </View>
                         <View style={styles.row}>
                             <View style={styles.column}>
-                                <Text style={styles.label}>{selectedPokemon.item.detailsData.height}</Text>
+                                <Text style={styles.label}>{selectedPokemon.detailsData.height}</Text>
                             </View>
                             <View style={styles.column}>
-                                <Text style={styles.label}>{selectedPokemon.item.detailsData.weight}</Text>
+                                <Text style={styles.label}>{selectedPokemon.detailsData.weight}</Text>
                             </View>
 
 
 
                         </View>
                     </View>
-
                 </View>
-                <Text style={styles.title}>Chaine d'évolution</Text>
-                <View style={styles.evolutionContainer}>
-                    <View style={styles.row}>
-                    <View style={styles.column}>
-                    <Text style={styles.evolutionItem}>{selectedPokemon.item.evolutionData.species.name}</Text>
-                    <ImageComponent url={selectedPokemon.item.evolutionData.species.url}></ImageComponent>
-                    </View>
-                    </View>
-                    
-                  
-                  
-
-                </View>
-                <View>
-                    {
-                        selectedPokemon.item.evolutionData.evolutions.map((evolutionStep) => (
-                            <View key={evolutionStep.species.name}>
-                                <Text style={styles.evolutionItem}>{evolutionStep.species.name}</Text>
-                                <ImageComponent url={evolutionStep.species.url}></ImageComponent>
-                                {evolutionStep.evolves_to.map((nextEvolutionStep) => (
-                                    <View key={nextEvolutionStep.species.name}>
-                                        <Text style={styles.evolutionItem}>{nextEvolutionStep.species.name}</Text>
-                                        <ImageComponent url={nextEvolutionStep.species.url}></ImageComponent>
-                                    </View>
-                                ))}
-
-
-                            </View>
-                        ))
-                    }
-                </View>
-
-
             </View>
-        </SafeAreaView>
+            <Text style={styles.title}>Chaine d'évolution</Text>
+
+
+
+
+
+            <View style={styles.evolutionContainer}>
+                <Text style={styles.evolutionItem}>{selectedPokemon.evolutionData.species.name}</Text>
+                <ImageComponent url={selectedPokemon.evolutionData.species.url}></ImageComponent>
+                {selectedPokemon.evolutionData.evolutions.map((evolutionStep) => (
+                    <View key={evolutionStep.species.name} style={styles.evolutionItemContainer}>
+                        <Text style={styles.evolutionItem}>{evolutionStep.species.name}</Text>
+                        <ImageComponent url={evolutionStep.species.url}></ImageComponent>
+
+                        {evolutionStep.evolves_to.map((nextEvolutionStep) => (
+                            <View key={nextEvolutionStep.species.name} style={styles.evolutionItemContainer}>
+                                <Text style={styles.evolutionItem}>{nextEvolutionStep.species.name}</Text>
+                                <ImageComponent url={nextEvolutionStep.species.url}></ImageComponent>
+                            </View>
+                        ))}
+                    </View>
+                ))}
+            </View>
+
+
+        </SafeAreaView >
 
     )
 }
@@ -90,44 +81,44 @@ const styles = StyleSheet.create({
     card: {
         flexDirection: 'column',
         height: 80,
-        width: 200,
+        width: 300,
         textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'center',
 
         backgroundColor: "white",
-        elevation: 10, 
+        elevation: 10,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 }, 
-        shadowOpacity: 0.3, 
-        shadowRadius: 4, 
-        padding:20,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        padding: 20,
         marginBottom: 10,
         marginTop: 10
 
 
     },
-    row: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 10,
-      },
-      column: {
-        flex: 1,
-        marginRight: 10,
-      },
+
     label: {
         marginRight: 10,
         textAlign: 'center',
         fontSize: 15
     },
     evolutionContainer: {
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        alignItems: 'center',
+    marginBottom: 10,
     },
     evolutionItem: {
         margin: 5,
         padding: 10,
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 10,
+    },
+    column: {
+        flex: 1,
+        marginRight: 10,
     },
 })

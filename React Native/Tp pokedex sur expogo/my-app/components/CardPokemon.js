@@ -73,17 +73,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   type: {
-    flex:1,
-    alignItems: 'center',
-    height: 30,
+    
+  alignItems: 'center',
+  marginBottom: 10,
     width: 'auto',
+    padding:5,
     backgroundColor: "rgba(255, 255, 255, 0.5)",
     borderRadius: 10,
-    marginBottom: 10,
-    marginTop: 5,
-    lineHeight: 20,
     justifyContent: 'center',
-    padding: 5
+    
   },
   title: {
     marginTop: 10,
@@ -95,8 +93,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     marginBottom: 10,

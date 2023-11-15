@@ -28,14 +28,12 @@ export default function DetailsComponent({ selectedPokemon }) {
                             <View style={styles.column}>
                                 <Text style={styles.label}>{selectedPokemon.detailsData.weight}</Text>
                             </View>
-
-
-
                         </View>
                     </View>
+                    <Text style={styles.title}>Chaine d'évolution</Text>
                 </View>
             </View>
-            <Text style={styles.title}>Chaine d'évolution</Text>
+         
 
 
 

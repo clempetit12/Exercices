@@ -1,18 +1,28 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
 export default function Home({ navigation }) {
+
+function pokedex () {
+  navigation.navigate("MonPokedex")
+}
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Attrapez les tous !!!</Text>
+      <Image
+        style={styles.image}
+        width={2050}
+        height={2050}
+        source={ require('../assets/pokemonbis.png')  }
+      />
       <View style={styles.row} >
         <TouchableOpacity onPress={() => navigation.navigate("Pokedex")}>
-          <View style={[styles.card, { backgroundColor: "lightblue" }]}>
+          <View style={[styles.card, { backgroundColor: "#365fab" }]}>
             <Text style={styles.text}>Pokemons</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("MonPokedex")}>
-          <View style={[styles.card, { backgroundColor: "lightgreen" }]}>
+        <TouchableOpacity onPress={() => pokedex()}>
+          <View style={[styles.card, { backgroundColor: "#ffcc00" }]}>
             <Text style={styles.text}>Pokedex</Text>
           </View>
         </TouchableOpacity>
@@ -55,6 +65,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: "100%"
+  },
+  image: {
+width: 300,
+height: 100,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    marginBottom: 10,
   }
 
 })

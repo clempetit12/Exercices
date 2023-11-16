@@ -17,12 +17,16 @@ export default function CardPokemon({ navigation, item }) {
   const setBackgroundColor = (types) => {
     const typeColors = {
       flying: 'lightblue',
+      electric: "lightyellow",
       poison: 'rgba(255, 102, 102, 0.5)',
       water: 'blue',
       fighting: 'orange',
       fire: 'red',
       normal: 'rgba(165, 129, 82, 0.5)',
       bug: "green",
+      ground: "brown",
+      fairy: "#d8b8ff",
+      grass: "lightgreen"
     };
 
     const firstType = types[0]?.type.name;

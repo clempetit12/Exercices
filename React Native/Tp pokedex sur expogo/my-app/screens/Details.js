@@ -1,12 +1,14 @@
-import { StyleSheet, Text, View, Image, Pressable, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable, ScrollView, Button } from 'react-native'
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import DetailsComponent from '../components/DetailsComponent';
+import { setMonPokedex } from './PokemonSlice';
 
 export default function Details() {
 
   const selectedPokemon = useSelector(state => state.pokemons.selectedPokemon)
-  
+  const dispatch = useDispatch()
+
   const setBackgroundColor = (types) => {
     const typeColors = {
         flying: 'lightblue',
@@ -21,6 +23,11 @@ export default function Details() {
     const firstType = types[0]?.type.name;
     return typeColors[firstType] || typeColors.default;
   };
+
+  function addToFavorite(selectedPokemon) {
+    console.log("addtofavorite");
+dispatch(setMonPokedex(selectedPokemon))
+  }
 
   useEffect(() => {
     console.log('selectionnepokemondans details', selectedPokemon);
@@ -43,6 +50,7 @@ export default function Details() {
             uri: selectedPokemon.detailsData.sprites["front_default"]
           }}
         />
+        <Button color={"#ffcc00"} onPress={()=> addToFavorite(selectedPokemon)}  title={"+ Ajouter aux favoris"}></Button>
         </View>
            
    
